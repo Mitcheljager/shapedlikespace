@@ -1,0 +1,13 @@
+<% content_for :page_title, "Your account" %>
+
+<h1>Your account</h1>
+
+You are logged in as <strong><%= current_user.username %></strong>
+
+<p>
+  <%= link_to "Edit your account", edit_user_path, class: "button" %>
+</p>
+
+<p>
+  <%= link_to "Logout", logout_path, class: "button button--secondary" %>
+</p>

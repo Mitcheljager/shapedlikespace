@@ -1,0 +1,38 @@
+<div class="form-group-columns">
+  <%= form_for @user, url: url do |f| %>
+    <% if user.errors.any? %>
+      <div class="error-block">
+        <h2 class="error-block__title"><strong><%= pluralize(user.errors.count, "error") %></strong> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><small><%= message %></small></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-field">
+      <%= f.label :username, class: "form-label" %>
+      <%= f.text_field :username, placeholder: "Username", class: "form-input" %>
+    </div>
+
+    <hr>
+
+    <div class="form-field">
+      <%= f.label :password, class: "form-label" %>
+      <%= f.password_field :password, placeholder: "Password", class: "form-input" %>
+
+      <div class="form-hint">Please use a unique password. Passwords are encrypted and securely stored.</div>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :password_confirmation, class: "form-label" %>
+      <%= f.password_field :password_confirmation, placeholder: "Password confirmation", class: "form-input" %>
+    </div>
+
+    <hr>
+
+    <%= submit_tag "Submit", class: "button" %>
+  <% end %>
+</div>

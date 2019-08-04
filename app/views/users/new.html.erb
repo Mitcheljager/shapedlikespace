@@ -1,0 +1,7 @@
+<% content_for :page_title, "Create an account" %>
+
+<h1>Create an account</h1>
+
+<%= render "form", user: @user, url: users_path %>
+
+<p><small>Already have an account? <%= link_to "Log in", login_path %></small></p>

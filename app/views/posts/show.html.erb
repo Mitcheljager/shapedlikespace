@@ -1,0 +1,9 @@
+<% content_for :page_title, @post.title %>
+
+<article class="item">
+  <h1 class="item__title">
+    <%= @post.title %>
+  </h1>
+  
+  <%= render "favorites/form", post: @post %>
+</article>
