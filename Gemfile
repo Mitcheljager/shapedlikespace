@@ -19,6 +19,9 @@ gem "impressionist"
 gem "elasticsearch-model", "~> 6"
 gem "elasticsearch-rails", "~> 6"
 
+gem "carrierwave"
+gem "mini_magick"
+
 gem "bcrypt", :require => "bcrypt"
 gem "high_voltage", "~> 3.0.0"
 

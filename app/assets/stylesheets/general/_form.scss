@@ -1,7 +1,12 @@
 .form-input {
   display: inline-block;
   width: 100%;
-  border: 0;
+  height: 60px;
+  padding: 0.5rem 1.5rem;
+  border: 2px solid #ccd1d4;
+  border-radius: 100px;
+  background: $white;
+  font-size: $font-size-base;
 
   &:focus {
     outline: none;
@@ -15,6 +20,7 @@
 .form-textarea {
   width: 100%;
   min-height: 600px;
+  border-radius: $border-radius;
 
   &--small {
     min-height: 300px;

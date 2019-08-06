@@ -1,9 +1,46 @@
 <% content_for :page_title, @post.title %>
 
-<article class="item">
-  <h1 class="item__title">
-    <%= @post.title %>
-  </h1>
-  
-  <%= render "favorites/form", post: @post %>
+<%= inline_svg "layout/background-blobs-header-1.svg", class: "header__blobs" %>
+
+<article class="post">
+  <div class="post__image carousel">
+    <div data-role="carousel">
+      <% 8.times do |i| %>
+        <%= image_tag "https://placehold.it/770x513&text=#{ i + 1 }" %>
+      <% end %>
+    </div>
+
+    <div class="carousel__navigation">
+      <% 8.times do |i| %>
+        <div class="carousel__item" data-action="carousel-go-to" data-target="<%= i %>">
+          <%= image_tag "https://placehold.it/120x120&text=#{ i + 1 }" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <model-viewer
+    src="https://googlewebcomponents.github.io/model-viewer/examples/assets/Astronaut.glb"
+    auto-rotate
+    camera-controls
+    background-color="#ecf0f2">
+  </model-viewer>
+
+  <main class="post__content">
+    <h1 class="mt-0"><%= @post.title %></h1>
+
+    <%= markdown(@post.description) %>
+  </main>
+
+  <aside class="post__top-sidebar">
+    <%= link_to "Download files", "#", class: "button button--primary" %>
+
+    <div class="button button--secondary top-offset">
+      <%= render "favorites/form", post: @post %>
+    </div>
+  </aside
+
+  <aside class="post__content-sidebar">
+    Sidebar
+  </aside>
 </article>

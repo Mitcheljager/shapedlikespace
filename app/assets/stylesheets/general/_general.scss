@@ -8,12 +8,25 @@ body {
   padding: 0;
   min-height: 100vh;
   font-size: $font-size-base;
+  color: $black;
+  overflow-x: hidden;
 }
 
 body {
   padding: 0 10vw;
+  font-family: $font-stack;
 
   @include media-min(sm) {
     padding: 0 10vw;
   }
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
 }

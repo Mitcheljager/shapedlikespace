@@ -1,0 +1,25 @@
+.header {
+  padding: $margin 0;
+  margin-bottom: 10vw;
+
+  @media (min-width: 1920px) {
+    margin-bottom: $margin * 4;
+  }
+}
+
+.header__bubbles,
+.header__blobs {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  z-index: -1;
+
+  @media (min-width: 1920px) {
+    width: 101%;
+  }
+}
+
+.header__blobs {
+  z-index: -2;
+}

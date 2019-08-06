@@ -1,0 +1,52 @@
+.carousel {
+  overflow: hidden;
+  width: 100%;
+
+  > div {
+    border-radius: $border-radius;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  div:first-child > img {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  div:last-child > img {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+  }
+}
+
+.carousel__navigation {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: $margin / 4;
+  margin-top: $margin / 4;
+}
+
+.carousel__item {
+  position: relative;
+  border-radius: $border-radius;
+  overflow: hidden;
+  cursor: pointer;
+
+  &--is-active {
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: $border-radius;
+      box-shadow: inset 0 0 0 2px $primary;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+.post {
+  display: grid;
+  grid-template:
+    "image top-sidebar"
+    "content content-sidebar";
+  grid-template-columns: 7fr 3fr;
+  grid-gap: 100px;
+}
+
+.post__image {
+  grid-area: image;
+
+  model-viewer {
+    width: 100%;
+    height: 513px;
+    border-radius: $border-radius;
+    box-shadow: 0 0 0 10px $white;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.post__content {
+  grid-area: content;
+}
+
+.post__top-sidebar {
+  grid-area: top-sidebar;
+}
+
+.post__content-sidebar {
+  grid-area: content-sidebar;
+}

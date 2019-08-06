@@ -1,0 +1,43 @@
+.button {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  border-radius: 100px;
+  padding: 0.8em 3em;
+  background: transparent;
+  border: 0;
+  font-family: "Raleway", sans-serif;
+  font-size: $font-size-base;
+  line-height: 1.5em;
+  text-align: center;
+  font-weight: 700;
+  text-transform: lowercase;
+
+  &--primary {
+    background: linear-gradient(105deg, $secondary 0%, $primary 100%);
+    color: $white;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: -5%;
+      height: 60%;
+      width: 80%;
+      background: linear-gradient(105deg, $secondary 0%, $primary 100%);
+      filter: blur(20px);
+      transform: translateX(-50%);
+      opacity: .75;
+      z-index: -1;
+    }
+  }
+
+  &--secondary {
+    margin-bottom: 10px;
+    border: 2px solid $gray;
+    background: $white;
+    overflow: hidden;
+  }
+}

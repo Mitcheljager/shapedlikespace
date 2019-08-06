@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   delete "user", to: "users#destroy", as: "destroy_user"
 
   resources :sessions, only: [:new, :create, :destroy]
+  get "sessions", to: redirect("/login")
 
   get "register", to: "users#new", as: "new_user"
   get "login", to: "sessions#new", as: "login"

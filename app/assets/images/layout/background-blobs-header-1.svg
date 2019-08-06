@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="1920" height="582.28" viewBox="0 0 1920 582.28">
+  <defs>
+    <style>
+      .blob-cls-1 {
+        fill: #ecf0f2;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Color_Fill_8" data-name="Color Fill 8" class="blob-cls-1" d="M5973.84,1299.97c-49.34-9.2-105.1-25.43-167.84-50.97-382.94-155.89-751.81,3.73-978,69-337.29,97.33-557.29,83.51-774-91V796H5974S5973.84,1059.61,5973.84,1299.97Z" transform="translate(-4054 -796)"/>
+</svg>
