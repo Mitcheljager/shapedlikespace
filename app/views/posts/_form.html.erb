@@ -1,4 +1,4 @@
-<%= form_with url: path, model: post, local: true do |form| %>
+<%= form_with url: path, model: post, local: true, html: { data: { role: "post-form" } } do |form| %>
   <% if post.errors.any? %>
     <div class="error-block">
       <h2 class="error-block__title"><strong><%= pluralize(post.errors.count, "error") %></strong> prohibited this Item from being saved:</h2>
@@ -14,6 +14,23 @@
   <div class="form-group">
     <%= form.text_field :title, class: "form-input form-input--large", placeholder: "Title" %>
   </div>
+
+  <div class="form-group">
+    <%= form.file_field :images, multiple: true %>
+
+    <div class="images-preview" data-role="form-image-thumbnails sortable">
+      <% @post.images.each do |image| %>
+        <div class="images-preview__item"><%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [200, 200]).processed %></div>
+      <% end %>
+    </div>
+
+    <div class="dropzone top-offset" data-role="dropzone">
+      <strong>Drop images here to add them to your post</strong>
+
+      <small>Images will be processed to a 770x513 format</small>
+    </div>
+  </div>
+
 
   <div class="form-group">
     <%= form.label :description, class: "form-label" %>
@@ -50,7 +67,7 @@
     </div>
   </div>
 
-  <div>
-    <center><%= form.submit class: "button" %></center>
+  <div class="top-offset">
+    <center><%= form.button class: "button button--primary button--inline" %></center>
   </div>
 <% end %>

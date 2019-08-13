@@ -604,13 +604,6 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
 
-"@google/model-viewer@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@google/model-viewer/-/model-viewer-0.5.0.tgz#567cfbbe81f2c0cf05692663884c00e8350f9c97"
-  dependencies:
-    lit-element "^2.0.0"
-    three "^0.105.2"
-
 "@rails/actioncable@^6.0.0-alpha":
   version "6.0.0-alpha"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-6.0.0-alpha.tgz#84be50626a43fe431789243c6b13c14f922bf048"
@@ -3309,16 +3302,6 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
-lit-element@^2.0.0:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/lit-element/-/lit-element-2.2.1.tgz#79c94d8cfdc2d73b245656e37991bd1e4811d96f"
-  dependencies:
-    lit-html "^1.0.0"
-
-lit-html@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.1.1.tgz#186ed6abcc70c0d24e1132b37411c3b2645ed1aa"
-
 load-json-file@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/load-json-file/-/load-json-file-1.1.0.tgz#956905708d58b4bab4c2261b04f59f31c99374c0"
@@ -5401,6 +5384,10 @@ sort-keys@^1.0.0:
   dependencies:
     is-plain-obj "^1.0.0"
 
+sortablejs@^1.10.0-rc3:
+  version "1.10.0-rc3"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.10.0-rc3.tgz#2fe63463a38b5cd12ec914fc3e03583048496f42"
+
 source-list-map@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
@@ -5738,9 +5725,9 @@ terser@^4.1.2:
     source-map "~0.6.1"
     source-map-support "~0.5.12"
 
-three@^0.105.2:
-  version "0.105.2"
-  resolved "https://registry.yarnpkg.com/three/-/three-0.105.2.tgz#d135f1549bdcf5a9acd904ba3dbf9198a0268984"
+three@^0.107.0:
+  version "0.107.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.107.0.tgz#0c862c348d61bd3f22058e01f5e771c1294315a1"
 
 through2@^2.0.0:
   version "2.0.5"

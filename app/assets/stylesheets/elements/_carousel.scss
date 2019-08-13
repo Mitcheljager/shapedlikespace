@@ -1,6 +1,6 @@
 .carousel {
-  overflow: hidden;
   width: 100%;
+  max-width: 770px;
 
   > div {
     border-radius: $border-radius;
@@ -8,16 +8,16 @@
 
   img {
     display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto;
   }
 
-  div:first-child > img {
+  div:first-child > picture img {
     border-top-left-radius: $border-radius;
     border-bottom-left-radius: $border-radius;
   }
 
-  div:last-child > img {
+  div:last-child > picture img {
     border-top-right-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
   }
@@ -25,9 +25,13 @@
 
 .carousel__navigation {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: $margin / 4;
   margin-top: $margin / 4;
+
+  @include media-min(sm) {
+    grid-template-columns: repeat(6, 1fr);
+  }
 }
 
 .carousel__item {
@@ -35,6 +39,11 @@
   border-radius: $border-radius;
   overflow: hidden;
   cursor: pointer;
+
+  &:hover,
+  &:active {
+    opacity: 0.75;
+  }
 
   &--is-active {
     &::after {
@@ -46,7 +55,7 @@
       width: 100%;
       height: 100%;
       border-radius: $border-radius;
-      box-shadow: inset 0 0 0 2px $primary;
+      box-shadow: inset 0 0 0 2px $secondary;
     }
   }
 }

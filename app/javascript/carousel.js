@@ -4,6 +4,9 @@ let carousel;
 
 document.addEventListener("turbolinks:load", function() {
   const element = document.querySelector("[data-role='carousel']")
+
+  if (!element) return
+
   carousel = new Siema({
     selector: element,
     onInit: setActiveItem,

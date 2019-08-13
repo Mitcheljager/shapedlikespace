@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     get "(page/:page)", action: :index, on: :collection, as: ""
   end
 
-  resources :posts, path: "", concerns: :paginatable, except: [:index]
+  resources :posts, path: "", param: :slug, concerns: :paginatable, except: [:index]
 
   get "search/:search(/page/:page)", to: "posts#search", as: "search"
-  post "search(/:type)", to: "search#index", as: "search_post"
+  post "search", to: "search#index", as: "search_post"
 end

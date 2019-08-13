@@ -4,7 +4,7 @@
   position: relative;
   width: 100%;
   border-radius: 100px;
-  padding: 0.8em 3em;
+  padding: 0.8em 2em;
   background: transparent;
   border: 0;
   font-family: "Raleway", sans-serif;
@@ -13,10 +13,20 @@
   text-align: center;
   font-weight: 700;
   text-transform: lowercase;
+  cursor: pointer;
 
   &--primary {
     background: linear-gradient(105deg, $secondary 0%, $primary 100%);
     color: $white;
+
+    &:hover,
+    &:active {
+      background: linear-gradient(105deg, darken($secondary, 5%) 0%, darken($primary, 5%) 100%);
+
+      &::after {
+        opacity: 1;
+      }
+    }
 
     &::after {
       content: "";
@@ -39,5 +49,17 @@
     border: 2px solid $gray;
     background: $white;
     overflow: hidden;
+    color: $black;
+
+    &:hover,
+    &:active {
+      background: $light;
+      border-color: darken($gray, 10%);
+    }
+  }
+
+  &--inline {
+    display: inline-block;
+    width: auto;
   }
 }

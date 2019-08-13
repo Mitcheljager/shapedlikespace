@@ -19,11 +19,11 @@
 
 .form-textarea {
   width: 100%;
-  min-height: 600px;
+  min-height: 300px;
   border-radius: $border-radius;
 
   &--small {
-    min-height: 300px;
+    min-height: 150px;
   }
 }
 
@@ -33,13 +33,14 @@
 }
 
 .form-group {
+  margin-top: $margin;
 }
 
 .form-group-columns {
   @include media-min(sm) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 0;
+    grid-gap: $margin;
   }
 }
 

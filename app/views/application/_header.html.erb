@@ -1,6 +1,6 @@
 <header class="header">
   <nav class="navigation">
-    <%= link_to "Root", root_path %>
+    <%= link_to inline_svg("logo.svg"), root_path %>
 
     <div>
       <% if current_user %>
@@ -11,7 +11,7 @@
       <% end %>
     </div>
 
-    <%= text_field_tag :search, "", class: "search form-input" %>
+    <%= render "search" %>
   </nav>
 
   <%= inline_svg "layout/header-bubbles.svg", class: "header__bubbles" %>

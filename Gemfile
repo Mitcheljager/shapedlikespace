@@ -19,14 +19,11 @@ gem "impressionist"
 gem "elasticsearch-model", "~> 6"
 gem "elasticsearch-rails", "~> 6"
 
-gem "carrierwave"
-gem "mini_magick"
-
 gem "bcrypt", :require => "bcrypt"
 gem "high_voltage", "~> 3.0.0"
 
-# Use Active Storage variant
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
+gem "active_storage_validations"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

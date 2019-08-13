@@ -4,27 +4,26 @@
 
 <article class="post">
   <div class="post__image carousel">
+    <div class="model-viewer" data-role="model-viewer"></div>
+
     <div data-role="carousel">
-      <% 8.times do |i| %>
-        <%= image_tag "https://placehold.it/770x513&text=#{ i + 1 }" %>
+      <% @post.images.each do |image| %>
+        <picture>
+          <source media="(min-width: 560px)" srcset="<%= url_for image.variant(convert: "jpg", quality: 85, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
+          <source media="(min-width: 0px)" srcset="<%= url_for image.variant(convert: "jpg", quality: 85, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
+          <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [770, 480]).processed %>
+        </picture>
       <% end %>
     </div>
 
     <div class="carousel__navigation">
-      <% 8.times do |i| %>
-        <div class="carousel__item" data-action="carousel-go-to" data-target="<%= i %>">
-          <%= image_tag "https://placehold.it/120x120&text=#{ i + 1 }" %>
+      <% @post.images.each_with_index do |image, index| %>
+        <div class="carousel__item" data-action="carousel-go-to" data-target="<%= index %>">
+          <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [120, 120]) %>
         </div>
       <% end %>
     </div>
   </div>
-
-  <model-viewer
-    src="https://googlewebcomponents.github.io/model-viewer/examples/assets/Astronaut.glb"
-    auto-rotate
-    camera-controls
-    background-color="#ecf0f2">
-  </model-viewer>
 
   <main class="post__content">
     <h1 class="mt-0"><%= @post.title %></h1>
@@ -38,7 +37,10 @@
     <div class="button button--secondary top-offset">
       <%= render "favorites/form", post: @post %>
     </div>
-  </aside
+
+    <%= link_to "Add a make", "#", class: "button button--secondary" %>
+    <%= link_to "Add to collection", "#", class: "button button--secondary" %>
+  </aside>
 
   <aside class="post__content-sidebar">
     Sidebar

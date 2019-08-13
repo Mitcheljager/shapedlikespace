@@ -1,0 +1,25 @@
+.dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 300px;
+  border: 2px dashed $gray;
+  padding: $margin;
+  border-radius: $border-radius;
+  text-align: center;
+  font-size: 21px;
+  line-height: 1.5em;
+  transition: box-shadow 100ms, background-color 100ms;
+
+  &--is-active {
+    background: $light;
+    border: 0;
+    box-shadow: 0 30px 30px rgba($black, .075), 0 10px 10px rgba($black, .075);
+  }
+
+  * {
+    pointer-events: none;
+  }
+}
