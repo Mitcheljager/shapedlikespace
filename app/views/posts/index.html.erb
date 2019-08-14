@@ -1,9 +1,9 @@
+<center><h1>Recent Creations</h1></center>
+
 <main class="items">
-  <h1>Recent Creations</h1>
-
   <%= render @posts %>
-
-  <%= link_to "New post", new_post_path, class: "button button--secondary button--inline" %>
-
-  <%= paginate @posts %>
 </main>
+
+<%= link_to "New post", new_post_path, class: "button button--secondary button--inline" %>
+
+<%= paginate @posts %>

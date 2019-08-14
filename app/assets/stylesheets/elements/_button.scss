@@ -58,6 +58,22 @@
     }
   }
 
+  &--ghost {
+    border: 2px solid $white;
+    padding: .5em 2em;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 400;
+    color: $white;
+
+    &:hover,
+    &:active {
+      background: $white;
+      color: $primary;
+      border-color: $white;
+    }
+  }
+
   &--inline {
     display: inline-block;
     width: auto;

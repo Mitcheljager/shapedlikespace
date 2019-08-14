@@ -1,3 +1,15 @@
-<article class="item">
-  <%= link_to post.title, post_path(post.slug) %>
-</article>
+<%= link_to post_path(post.slug), class: "item" do %>
+  <div class="item__content">
+    <%= post.title.truncate(30) %>
+    <span class="item__author"><%= post.user.username %></span>
+  </div>
+
+  <div class="item__hover">
+    <h3 class="item__hover-title"><%= post.title.truncate(50) %></h3>
+    <span class="item__hover-author"><%= post.user.username %></span>
+
+    <div class="button button--ghost button--inline">View</div>
+  </div>
+
+  <%= image_tag "https://placehold.it/263x263", class: "item__image" %>
+<% end %>
