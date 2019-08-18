@@ -13,6 +13,7 @@
   text-align: center;
   font-weight: 700;
   text-transform: lowercase;
+  transition: box-shadow 50ms;
   cursor: pointer;
 
   &--primary {
@@ -45,7 +46,6 @@
   }
 
   &--secondary {
-    margin-bottom: 10px;
     border: 2px solid $gray;
     background: $white;
     overflow: hidden;
@@ -53,8 +53,9 @@
 
     &:hover,
     &:active {
-      background: $light;
+      background: $white;
       border-color: darken($gray, 10%);
+      box-shadow: $box-shadow;
     }
   }
 
@@ -71,6 +72,19 @@
       background: $white;
       color: $primary;
       border-color: $white;
+    }
+  }
+
+  &--alternative {
+    border: 0;
+    background: $secondary;
+    color: $white;
+
+    &:hover,
+    &:active {
+      background: lighten($secondary, 5%);
+      color: $white;
+      box-shadow: $box-shadow;
     }
   }
 

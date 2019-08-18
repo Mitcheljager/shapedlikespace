@@ -16,7 +16,7 @@
   &--is-active {
     background: $light;
     border: 0;
-    box-shadow: 0 30px 30px rgba($black, .075), 0 10px 10px rgba($black, .075);
+    box-shadow: $box-shadow;
   }
 
   * {

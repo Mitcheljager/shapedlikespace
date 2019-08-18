@@ -15,7 +15,11 @@ module ApplicationHelper
     content = markdown.render(text)
     content.gsub(/\[youtube\s+(.*?)\]/, iframe).html_safe
   end
-  
+
+  def to_slug(string)
+    string.downcase.gsub(" ", "-").gsub(":", "").gsub(".", "").gsub("'", "")
+  end
+
   def categories
     YAML.load(File.read(Rails.root.join("config/arrays", "categories.yml")))
   end

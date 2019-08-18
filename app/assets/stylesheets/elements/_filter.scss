@@ -1,0 +1,25 @@
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $margin / 2 $margin * 0.7 $margin / 2 $margin;
+  margin-left: $margin * 4 0;
+  border-radius: 100px;
+  background: $white;
+  box-shadow: $box-shadow;
+}
+
+.filter__search {
+  height: auto;
+  width: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 2px solid $black;
+  font-weight: 700;
+
+  &::placeholder {
+    font-weight: normal;
+    color: $gray;
+  }
+}

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   mount ActionCable.server => "/cable"
 
-  root "posts#index"
+  root "frontpage#index"
 
   resources :users, param: :username, except: [:new, :index, :edit, :update]
   get "account(/page/:page)", to: "users#account", as: "account"
@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get "(page/:page)", action: :index, on: :collection, as: ""
   end
 
+  get "discover(/page/:page)", to: "posts#index", as: "discover"
+  get "discover(/category/:category)(/sort/:sort)(/from/:from)(/to/:to)(/search/:search)(/page/:page)", to: "posts#filter", as: "filter"
   resources :posts, path: "", param: :slug, concerns: :paginatable, except: [:index]
 
   get "search/:search(/page/:page)", to: "posts#search", as: "search"

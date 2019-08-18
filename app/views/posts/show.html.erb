@@ -16,10 +16,11 @@
       <% end %>
     </div>
 
+
     <div class="carousel__navigation">
       <% @post.images.each_with_index do |image, index| %>
         <div class="carousel__item" data-action="carousel-go-to" data-target="<%= index %>">
-          <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [120, 120]) %>
+          <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [120, 120]).processed %>
         </div>
       <% end %>
     </div>

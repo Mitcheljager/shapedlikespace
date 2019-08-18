@@ -8,11 +8,22 @@ class PostsController < ApplicationController
   end
 
   before_action only: [:create, :new] do
-    redirect_to root_path unless current_user
+    redirect_to login_path unless current_user
   end
 
   def index
     @posts = Post.order(created_at: :desc).page params[:page]
+  end
+
+  def filter
+    @posts = Post.order(created_at: :desc)
+
+    @posts = @posts.where("created_at >= ?", params[:from]) if params[:from]
+    @posts = @posts.where("created_at <= ?", params[:to]) if params[:to]
+    @posts = @posts.order(created_at: :desc) if params[:sort]
+    @posts = @posts.order(@order).select { |post| to_slug(post.categories).include?(to_slug(params[:category])) } if params[:category]
+
+    @posts = Kaminari.paginate_array(@posts).page(params[:page])
   end
 
   def search

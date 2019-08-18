@@ -2,4 +2,47 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: rgba($white, .5);
+  font-size: 16px;
+
+  svg {
+    display: block;
+  }
+}
+
+.navigation__main {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__actions {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__item {
+  margin-left: $margin;
+  color: $white;
+  font-size: 21px;
+  font-weight: 700;
+  text-transform: lowercase;
+  line-height: 1em;
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
+
+  &--small {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba($white, .85);
+
+    &:hover,
+    &:active {
+      color: $white;
+      text-decoration: none;
+    }
+  }
 }

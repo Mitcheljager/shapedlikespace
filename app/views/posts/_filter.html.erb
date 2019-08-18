@@ -1,0 +1,66 @@
+<%= form_tag "", class: "filter", data: { role: "filter" } do %>
+  <div>
+    <div class="input-dropdown" data-role="input-dropdown" data-action="toggle-input-dropdown-content">
+      Category <span data-role="input-dropdown-value" class="input-dropdown__value"><%= params[:category] || "..." %></span>
+
+      <div class="input-dropdown__content" data-role="input-dropdown-content">
+        <% categories.each do |category| %>
+          <%= link_to category, "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: category } %>
+        <% end %>
+
+        <%= text_field_tag :category, params[:category], class: "input-dropdown__input", data: { role: "input-dropdown-input" } %>
+      </div>
+    </div>
+
+    <div class="input-dropdown" data-role="input-dropdown" data-action="toggle-input-dropdown-content">
+      Sort by <span data-role="input-dropdown-value" class="input-dropdown__value"><%= params[:sort] || "..." %></span>
+
+      <div class="input-dropdown__content" data-role="input-dropdown-content">
+        <%= link_to "Time", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: "time" } %>
+        <%= link_to "Popularity", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: "popularity" } %>
+        <%= link_to "Views", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: "views" } %>
+        <%= link_to "Downloads", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: "downloads" } %>
+
+      <%= text_field_tag :sort, params[:sort], class: "input-dropdown__input", data: { role: "input-dropdown-input" } %>
+      </div>
+    </div>
+
+    <div class="input-dropdown" data-role="input-dropdown" data-action="toggle-input-dropdown-content">
+      From <span data-role="input-dropdown-value" class="input-dropdown__value"><%= params[:from] || "The beginning of time" %></span>
+
+      <div class="input-dropdown__content" data-role="input-dropdown-content">
+        <%= link_to "1 day ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.day.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "3 days ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 3.days.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "1 week ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.week.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "1 month ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.month.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "3 months ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 3.months.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "6 months ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 6.months.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "1 year ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.year.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "The beginning of time", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: "" } %>
+
+        <%= date_field_tag :from, params[:from], class: "input-dropdown__input", data: { role: "input-dropdown-input" } %>
+      </div>
+    </div>
+
+    <div class="input-dropdown" data-role="input-dropdown" data-action="toggle-input-dropdown-content">
+      To <span data-role="input-dropdown-value" class="input-dropdown__value"><%= params[:to] || "Now" %></span>
+
+      <div class="input-dropdown__content" data-role="input-dropdown-content">
+        <%= link_to "1 day ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.day.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "3 days ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 3.days.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "1 week ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.week.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "1 month ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.month.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "3 months ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 3.months.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "6 months ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 6.months.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "1 year ago", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: 1.year.ago.strftime("%Y-%m-%d") } %>
+        <%= link_to "Now", "#", class: "input-dropdown__item", data: { action: "input-dropdown-set-value", value: "" } %>
+
+        <%= date_field_tag :to, params[:to], class: "input-dropdown__input", data: { role: "input-dropdown-input" } %>
+      </div>
+    </div>
+  </div>
+
+  <%= text_field_tag :search, params[:search], class: "filter__search form-input", placeholder: "Search" %>
+
+  <%= button_tag "Filter", class: "button button--secondary button--inline" %>
+<% end %>

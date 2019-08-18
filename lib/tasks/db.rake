@@ -7,7 +7,7 @@ namespace :db do
         title: Faker::Lorem.sentence,
         slug: Faker::Lorem.sentence.parameterize + "-" + SecureRandom.hex(4),
         description: Faker::Markdown.sandwich(sentences: 6, repeat: 3),
-        categories: ["Tools"],
+        categories: [categories.sample],
         tags: Faker::Lorem.word
       )
     end

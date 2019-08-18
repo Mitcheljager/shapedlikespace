@@ -1,10 +1,10 @@
 <div itemscope itemtype="https://schema.org/WebSite">
   <meta itemprop="url" content="url.com"/>
 
-  <%= form_tag (controller_name == "snippets" ? search_post_path("snippets") : search_post_path), itemprop: "potentialAction", itemscope: "", itemtype: "https://schema.org/SearchAction" do %>
+  <%= form_tag search_post_path, class: "search", itemprop: "potentialAction", itemscope: "", itemtype: "https://schema.org/SearchAction" do %>
     <meta itemprop="target" content="url.comsearch/{query}"/>
 
-    <%= text_field_tag :query, params[:search], class: "search form-input", placeholder: "Search", itemprop: "query-input", required: "true" %>
+    <%= text_field_tag :query, params[:search], class: "search__input form-input", placeholder: "Search", itemprop: "query-input", required: "true" %>
 
     <%= submit_tag "", class: "search__submit" %>
   <% end %>

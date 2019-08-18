@@ -1,13 +1,28 @@
 .items {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 263px));
   grid-gap: $margin;
+  justify-content: center;
+
+  @include media-min(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-content: flex-start;
+  }
+
+  @include media-min(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include media-min(xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 .item {
   width: 100%;
   position: relative;
   border-radius: $border-radius;
+  background: $light;
   text-align: center;
   font-size: 14px;
   overflow: hidden;
@@ -15,7 +30,7 @@
 
   &:hover,
   &:active {
-    box-shadow: 0 30px 30px rgba($black, .075), 0 10px 10px rgba($black, .075);
+    box-shadow: $box-shadow;
 
     .item__hover {
       opacity: 1;

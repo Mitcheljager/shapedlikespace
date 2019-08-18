@@ -1,17 +1,27 @@
 <header class="header">
   <nav class="navigation">
-    <%= link_to inline_svg("logo.svg"), root_path %>
+    <div class="navigation__main">
+      <%= link_to inline_svg("logo.svg"), root_path %>
 
-    <div>
-      <% if current_user %>
-        Logged in as <%= link_to current_user.username, account_path %>
-      <% else %>
-        <%= link_to "Login", login_path %>
-        <%= link_to "Register", new_user_path %>
-      <% end %>
+      <%= link_to "Discover", discover_path, class: "navigation__item" %>
     </div>
 
-    <%= render "search" %>
+    <div class="navigation__actions">
+      <div>
+        <% if current_user %>
+          <%= link_to current_user.username, account_path, class: "navigation__item" %>
+        <% else %>
+          <%= link_to "Login", login_path, class: "navigation__item navigation__item--small" %>
+          &nbsp;/&nbsp;
+          <%= link_to "Register", new_user_path, class: "navigation__item navigation__item--small" %>
+        <% end %>
+      </div>
+
+      <%= render "search" %>
+
+      <%= link_to "Create", new_post_path, class: "button button--alternative button--inline" %>
+    </div>
+
   </nav>
 
   <%= inline_svg "layout/header-bubbles.svg", class: "header__bubbles" %>

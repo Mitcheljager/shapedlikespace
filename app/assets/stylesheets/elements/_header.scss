@@ -22,4 +22,8 @@
 
 .header__blobs {
   z-index: -2;
+
+  &--negative-offset {
+    margin-top: -#{ $margin * 2 };
+  }
 }
