@@ -4,7 +4,7 @@
 
 <article class="post">
   <div class="post__image carousel">
-    <div class="model-viewer" data-role="model-viewer"></div>
+    <!-- <div class="model-viewer" data-role="model-viewer"></div> -->
 
     <div data-role="carousel">
       <% @post.images.each do |image| %>
@@ -21,6 +21,7 @@
       <% @post.images.each_with_index do |image, index| %>
         <div class="carousel__item" data-action="carousel-go-to" data-target="<%= index %>">
           <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [120, 120]).processed %>
+          <%= number_to_human_size image.byte_size %>
         </div>
       <% end %>
     </div>

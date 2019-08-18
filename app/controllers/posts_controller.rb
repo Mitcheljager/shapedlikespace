@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, { categories: [] }, :tags, images: [])
+    params.require(:post).permit(:title, :description, { categories: [] }, :tags, images: [], files: [])
   end
 
   def create_slug

@@ -4,9 +4,9 @@
       <h2 class="error-block__title"><strong><%= pluralize(post.errors.count, "error") %></strong> prohibited this Item from being saved:</h2>
 
       <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><small><%= message %></small></li>
-      <% end %>
+        <% post.errors.full_messages.each do |message| %>
+          <li><small><%= message %></small></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -16,7 +16,8 @@
   </div>
 
   <div class="form-group">
-    <%= form.file_field :images, multiple: true %>
+    <%= form.file_field :images, multiple: true, direct_upload: true %>
+    <%= form.file_field :files, multiple: true, direct_upload: true %>
 
     <div class="images-preview" data-role="form-image-thumbnails sortable">
       <% @post.images.each do |image| %>

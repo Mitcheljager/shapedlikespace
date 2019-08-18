@@ -1,14 +1,10 @@
-import { DirectUpload } from "@rails/activestorage"
 import Sortable from "sortablejs"
 import * as THREE from "three"
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js"
 import Rails from "@rails/ujs"
-
-let newImages
+import Uploader from "uploader"
 
 document.addEventListener("turbolinks:load", function() {
-  newImages = new DataTransfer()
-
   bindDropzone()
   buildSortable()
 
@@ -44,7 +40,7 @@ function dropzoneLeave(event) {
   this.classList.remove("dropzone--is-active")
 }
 
-function dropzoneDrop(event) {
+async function dropzoneDrop(event) {
   event.preventDefault()
 
   this.classList.remove("dropzone--is-active")
@@ -57,7 +53,7 @@ function dropzoneDrop(event) {
 
       if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
         readImage(file)
-      } else if (file.name.endsWith(".stl")) {
+      } else if (file.name.endsWith(".stl")) {        
         readSTL(file)
       }
     }
@@ -84,6 +80,8 @@ function readSTL(file) {
 
   reader.onload = event => {
     drawSTLOnCanvas(file)
+
+    new Uploader(file, "files")
   }
 }
 
@@ -110,12 +108,12 @@ function drawImageOnCanvas(image) {
     const filename =  Math.random().toString(36).substring(2, 15)
     const file = new File([blob], filename, {
       type: "image/jpg",
+      quality: 0.85,
       lastModified: Date.now()
     })
 
-    newImages.items.add(file)
-
     drawAndRenderThumbnail(image)
+    new Uploader(file, "images")
   }, "image/jpg", 0.85)
 }
 
@@ -188,16 +186,12 @@ function drawSTLOnCanvas(file) {
     const canvas = element.querySelector("canvas")
     const ctx = canvas.getContext("webgl")
 
-    console.log(ctx)
-
     ctx.canvas.toBlob(blob => {
       const filename =  Math.random().toString(36).substring(2, 15)
       const file = new File([blob], filename, {
         type: "image/jpg",
         lastModified: Date.now()
       })
-
-      newImages.items.add(file)
 
       const reader = new FileReader()
       reader.readAsDataURL(file)
@@ -208,10 +202,9 @@ function drawSTLOnCanvas(file) {
 
         image.onload = () => {
           drawAndRenderThumbnail(image)
+          new Uploader(image, "images")
         }
       }
-
-      newImages.items.add(file)
     }, "image/jpg", 0.85)
   }
 
