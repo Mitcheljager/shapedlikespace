@@ -15,7 +15,9 @@ class Post < ApplicationRecord
   validates :title, presence: true, length: { minimum: 5, maximum: 75 }
   validates :categories, presence: true
   validates :tags, length: { maximum: 50 }
-  validates :images, content_type: ["image/png", "image/jpg", "image/jpeg"], size: { less_than: 1000.kilobytes }
+  validates :images, attached: true,
+                     content_type: "image/jpeg",
+                     size: { less_than: 500.kilobytes }
 
   def self.search(query)
     __elasticsearch__.search({

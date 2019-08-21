@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_12_193127) do
+ActiveRecord::Schema.define(version: 2019_08_20_111829) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -76,7 +76,9 @@ ActiveRecord::Schema.define(version: 2019_08_12_193127) do
     t.datetime "updated_at", null: false
     t.integer "favorites_count", default: 0
     t.string "slug"
+    t.integer "impressions_count", default: 0
     t.index ["favorites_count"], name: "index_posts_on_favorites_count"
+    t.index ["impressions_count"], name: "index_posts_on_impressions_count"
   end
 
   create_table "remember_tokens", force: :cascade do |t|

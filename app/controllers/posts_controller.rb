@@ -16,12 +16,12 @@ class PostsController < ApplicationController
   end
 
   def filter
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.all
 
     @posts = @posts.where("created_at >= ?", params[:from]) if params[:from]
     @posts = @posts.where("created_at <= ?", params[:to]) if params[:to]
-    @posts = @posts.order(created_at: :desc) if params[:sort]
-    @posts = @posts.order(@order).select { |post| to_slug(post.categories).include?(to_slug(params[:category])) } if params[:category]
+    @posts = @posts.order("#{ sort_switch } DESC") if params[:sort]
+    @posts = @posts.select { |post| to_slug(post.categories).include?(to_slug(params[:category])) } if params[:category]
 
     @posts = Kaminari.paginate_array(@posts).page(params[:page])
   end
@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    impressionist(@post)
   end
 
   def new
@@ -81,6 +82,19 @@ class PostsController < ApplicationController
 
     if Post.find_by_slug(@post.slug)
       @post.slug = @post.slug + "-" + SecureRandom.hex(4)
+    end
+  end
+
+  def sort_switch
+    case params[:sort]
+    when "views"
+      "impressions_count"
+    when "favorites"
+      "favorites_count"
+    when "time"
+      "created_at"
+    else
+      "created_at"
     end
   end
 end

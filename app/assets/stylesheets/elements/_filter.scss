@@ -1,12 +1,42 @@
 .filter {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: $margin / 2 $margin * 0.7 $margin / 2 $margin;
-  margin-left: $margin * 4 0;
-  border-radius: 100px;
+  flex-direction: column;
+  padding: $margin;
+  border-radius: $border-radius;
   background: $white;
   box-shadow: $box-shadow;
+
+  @include media-min(xl) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: $margin / 2 $margin * 0.7 $margin / 2 $margin;
+    border-radius: 100px;
+  }
+}
+
+.filter__content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @include media-min(xl) {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.filter__link {
+  font-size: 16px;
+  color: $gray;
+  font-weight: bold;
+  text-transform: lowercase;
+  margin: $margin / 2 0;
+
+  @include media-min(xl) {
+    margin: 0 0 0 $margin / 2;
+  }
 }
 
 .filter__search {
@@ -14,12 +44,21 @@
   width: auto;
   padding: 0;
   border: 0;
+  margin-bottom: $margin / 2;
   border-radius: 0;
   border-bottom: 2px solid $black;
   font-weight: 700;
 
+  @include media-min(xl) {
+    margin: 0 $margin / 2 0 auto;
+  }
+
   &::placeholder {
-    font-weight: normal;
+    font-family: $font-stack;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: lowercase;
     color: $gray;
+    font-style: normal;
   }
 }

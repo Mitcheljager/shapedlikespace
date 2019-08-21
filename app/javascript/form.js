@@ -53,7 +53,7 @@ async function dropzoneDrop(event) {
 
       if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
         readImage(file)
-      } else if (file.name.endsWith(".stl")) {        
+      } else if (file.name.endsWith(".stl")) {
         readSTL(file)
       }
     }
@@ -92,12 +92,12 @@ function drawImageOnCanvas(image) {
   canvas.width = 770
   canvas.height = 480
 
-  if (image.height > image.width) {
-    const scaleFactor = canvas.width / image.width
-    image.width = canvas.width
-    image.height = image.height * scaleFactor
-  } else {
-    const scaleFactor = canvas.height / image.height
+  let scaleFactor = canvas.width / image.width
+  image.width = canvas.width
+  image.height = image.height * scaleFactor
+
+  if (image.height < canvas.height) {
+    scaleFactor = canvas.width / image.width
     image.height = canvas.height
     image.width = image.width * scaleFactor
   }
@@ -107,14 +107,14 @@ function drawImageOnCanvas(image) {
   ctx.canvas.toBlob(blob => {
     const filename =  Math.random().toString(36).substring(2, 15)
     const file = new File([blob], filename, {
-      type: "image/jpg",
-      quality: 0.85,
+      type: "image/jpeg",
+      quality: 0.95,
       lastModified: Date.now()
     })
 
     drawAndRenderThumbnail(image)
     new Uploader(file, "images")
-  }, "image/jpg", 0.85)
+  }, "image/jpeg", 0.95)
 }
 
 function drawAndRenderThumbnail(image) {

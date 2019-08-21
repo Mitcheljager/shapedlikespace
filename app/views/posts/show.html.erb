@@ -9,9 +9,9 @@
     <div data-role="carousel">
       <% @post.images.each do |image| %>
         <picture>
-          <source media="(min-width: 560px)" srcset="<%= url_for image.variant(convert: "jpg", quality: 85, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
-          <source media="(min-width: 0px)" srcset="<%= url_for image.variant(convert: "jpg", quality: 85, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
-          <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [770, 480]).processed %>
+          <source media="(min-width: 560px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
+          <source media="(min-width: 0px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
+          <%= image_tag image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>
         </picture>
       <% end %>
     </div>
@@ -20,8 +20,7 @@
     <div class="carousel__navigation">
       <% @post.images.each_with_index do |image, index| %>
         <div class="carousel__item" data-action="carousel-go-to" data-target="<%= index %>">
-          <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [120, 120]).processed %>
-          <%= number_to_human_size image.byte_size %>
+          <%= image_tag image.variant(quality: 85, resize_to_fill: [120, 120]).processed %>
         </div>
       <% end %>
     </div>
@@ -45,6 +44,8 @@
   </aside>
 
   <aside class="post__content-sidebar">
-    Sidebar
+    Sidebar <br>
+
+    <%= @post.impressions_count %>
   </aside>
 </article>

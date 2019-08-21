@@ -1,7 +1,7 @@
 .input-dropdown {
   position: relative;
   display: inline-block;
-  margin-right: $margin;
+  margin-right: $margin / 2;
   border-bottom: 2px solid $black;
   color: $black;
   font-weight: 700;
@@ -44,6 +44,16 @@
   &:hover,
   &:active {
     background: $light;
+  }
+
+  &--tray {
+    display: none;
+    margin-top: $margin / 4;
+    border-top: 1px solid $light;
+  }
+  
+  &--is-active {
+    display: block;
   }
 }
 

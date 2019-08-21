@@ -265,6 +265,7 @@ DEPENDENCIES
   inline_svg
   jbuilder (~> 2.7)
   kaminari
+  mini_magick (>= 4.9.5)
   pg
   puma (~> 3.11)
   rails (~> 6.0.0.rc2)
