@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   require "mini_magick"
 
+  invisible_captcha only: [:create, :update]
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   before_action only: [:edit, :update, :destroy] do
@@ -93,6 +95,8 @@ class PostsController < ApplicationController
       "favorites_count"
     when "time"
       "created_at"
+    when "popularity"
+      "hotness"
     else
       "created_at"
     end

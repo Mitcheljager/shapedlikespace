@@ -105,7 +105,7 @@ function drawImageOnCanvas(image) {
   ctx.drawImage(image, (canvas.width / 2) - (image.width / 2), (canvas.height / 2) - (image.height / 2), image.width, image.height)
 
   ctx.canvas.toBlob(blob => {
-    const filename =  Math.random().toString(36).substring(2, 15)
+    const filename =  Math.random().toString(36).substring(2, 15) + ".jpeg"
     const file = new File([blob], filename, {
       type: "image/jpeg",
       quality: 0.95,
@@ -187,11 +187,14 @@ function drawSTLOnCanvas(file) {
     const ctx = canvas.getContext("webgl")
 
     ctx.canvas.toBlob(blob => {
-      const filename =  Math.random().toString(36).substring(2, 15)
+      const filename =  Math.random().toString(36).substring(2, 15) + ".jpeg"
       const file = new File([blob], filename, {
-        type: "image/jpg",
+        type: "image/jpeg",
+        quality: 0.95,
         lastModified: Date.now()
       })
+
+      new Uploader(file, "images")
 
       const reader = new FileReader()
       reader.readAsDataURL(file)
@@ -201,11 +204,11 @@ function drawSTLOnCanvas(file) {
         image.src = event.target.result
 
         image.onload = () => {
+
           drawAndRenderThumbnail(image)
-          new Uploader(image, "images")
         }
       }
-    }, "image/jpg", 0.85)
+    }, "image/jpeg", 0.95)
   }
 
   element.remove()

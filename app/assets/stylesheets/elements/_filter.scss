@@ -1,4 +1,5 @@
 .filter {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: $margin;
@@ -29,13 +30,17 @@
 
 .filter__link {
   font-size: 16px;
-  color: $gray;
+  color: $black;
   font-weight: bold;
   text-transform: lowercase;
   margin: $margin / 2 0;
 
   @include media-min(xl) {
     margin: 0 0 0 $margin / 2;
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 }
 
@@ -61,4 +66,11 @@
     color: $gray;
     font-style: normal;
   }
+}
+
+.filter__tray {
+  position: absolute;
+  left: $margin / 2;
+  bottom: -#{ $margin };
+  z-index: 2;
 }

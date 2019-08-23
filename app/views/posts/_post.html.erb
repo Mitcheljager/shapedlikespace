@@ -11,5 +11,9 @@
     <div class="button button--ghost button--inline">View</div>
   </div>
 
-  <%= image_tag "https://placehold.it/263x263", class: "item__image" %>
+  <% if post.images.any? %>
+    <%= image_tag post.images.first.variant(quality: 85, resize_to_fill: [263, 263]).processed, class: "item__image" %>
+  <% else %>
+    <%= image_tag "https://placehold.it/263x263", class: "item__image" %>
+  <% end %>
 <% end %>

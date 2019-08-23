@@ -9,7 +9,7 @@
     <div class="navigation__actions">
       <div>
         <% if current_user %>
-          <%= link_to current_user.username, account_path, class: "navigation__item" %>
+          <%= link_to current_user.username, account_path, class: "navigation__item navigation__item--small" %>
         <% else %>
           <%= link_to "Login", login_path, class: "navigation__item navigation__item--small" %>
           &nbsp;/&nbsp;

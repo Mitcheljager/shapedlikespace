@@ -6,6 +6,8 @@ class FavoritesController < ApplicationController
     @post = Post.find(favorite_params[:post_id])
 
     if @favorite.save
+      @post.increment!(:hotness)
+
       respond_to do |format|
         format.js
       end
@@ -18,6 +20,8 @@ class FavoritesController < ApplicationController
     @post = Post.find(favorite_params[:post_id])
 
     if @favorite.destroy
+      @post.increment!(:hotness, -1)
+
       respond_to do |format|
         format.js
       end

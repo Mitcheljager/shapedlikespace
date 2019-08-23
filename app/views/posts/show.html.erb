@@ -46,6 +46,13 @@
   <aside class="post__content-sidebar">
     Sidebar <br>
 
-    <%= @post.impressions_count %>
+    Views: <%= @post.impressions_count %> <br>
+    Hotness: <%= @post.hotness %>
+
+    <div>
+      <% @post.files.each_with_index do |file, index| %>
+        <div><%= file.filename %></div>
+      <% end %>
+    </div>
   </aside>
 </article>
