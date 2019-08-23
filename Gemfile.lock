@@ -83,11 +83,11 @@ GEM
       elasticsearch-transport (= 7.3.0)
     elasticsearch-api (7.3.0)
       multi_json
-    elasticsearch-model (6.1.0)
+    elasticsearch-model (7.0.0)
       activesupport (> 3)
       elasticsearch (> 1)
       hashie
-    elasticsearch-rails (6.1.0)
+    elasticsearch-rails (7.0.0)
     elasticsearch-transport (7.3.0)
       faraday
       multi_json
@@ -116,6 +116,8 @@ GEM
     inline_svg (1.5.2)
       activesupport (>= 3.0)
       nokogiri (>= 1.6)
+    invisible_captcha (0.12.1)
+      rails (>= 3.2.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     kaminari (1.1.1)
@@ -255,14 +257,15 @@ DEPENDENCIES
   bcrypt
   byebug
   capybara (>= 2.15)
-  elasticsearch-model (~> 6)
-  elasticsearch-rails (~> 6)
+  elasticsearch-model (~> 7)
+  elasticsearch-rails (~> 7)
   faker
   heroku-deflater
   high_voltage (~> 3.0.0)
   image_processing (~> 1.2)
   impressionist
   inline_svg
+  invisible_captcha
   jbuilder (~> 2.7)
   kaminari
   mini_magick (>= 4.9.5)

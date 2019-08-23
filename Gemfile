@@ -15,9 +15,10 @@ gem "inline_svg"
 gem "redcarpet"
 gem "kaminari"
 gem "impressionist"
+gem "invisible_captcha"
 
-gem "elasticsearch-model", "~> 6"
-gem "elasticsearch-rails", "~> 6"
+gem "elasticsearch-model", "~> 7"
+gem "elasticsearch-rails", "~> 7"
 
 gem "bcrypt", :require => "bcrypt"
 gem "high_voltage", "~> 3.0.0"
