@@ -1,6 +1,14 @@
 .search {
   position: relative;
-  margin: 0 $margin / 5 0 $margin;
+  margin: 0 $margin / 5 0 auto;
+
+  @include media-min(xl) {
+    margin-left: $margin / 4;
+  }
+
+  @include media-min(xxl) {
+    margin-left: $margin;
+  }
 }
 
 .search__input {
@@ -12,14 +20,14 @@
 
   &:focus {
     background: rgba($white, .7);
-    max-width: 300px;
     box-shadow: $box-shadow;
   }
 
   &::placeholder {
-    color: $black;
+    color: $primary-dark;
     text-transform: lowercase;
     font-weight: 700;
+    font-size: 16px;
   }
 }
 

@@ -1,12 +1,10 @@
 class ActiveStorage::DirectUploadsController < ActiveStorage::BaseController
   def create
-    arguments = blob_args
-
-    if arguments[:content_type] == ""
-      arguments[:content_type] = "model/stl"
+    if params[:blob][:content_type] == ""
+      params[:blob][:content_type] = "model/stl"
     end
 
-    blob = ActiveStorage::Blob.create_before_direct_upload!(arguments)
+    blob = ActiveStorage::Blob.create_before_direct_upload!(blob_args)
     render json: direct_upload_json(blob)
   end
 

@@ -1,9 +1,13 @@
 .navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: block;
   color: rgba($white, .5);
   font-size: 16px;
+
+  @include media-min(xl) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   svg {
     display: block;
@@ -13,20 +17,36 @@
 .navigation__main {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
+  @include media-min(xl) {
+    justify-content: flex-start;
+  }
 }
 
 .navigation__actions {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  margin-top: $margin / 2;
+
+  @include media-min(xl) {
+    justify-content: flex-start;
+    margin-top: 0;
+  }
 }
 
 .navigation__item {
-  margin-left: $margin;
+  margin-left: $margin / 2;
   color: $white;
   font-size: 21px;
   font-weight: 700;
   text-transform: lowercase;
   line-height: 1em;
+
+  @include media-min(xxl) {
+    margin-left: $margin;
+  }
 
   &:hover,
   &:active {
@@ -43,5 +63,16 @@
       color: $white;
       text-decoration: none;
     }
+  }
+}
+
+.navigation__logo {
+  width: 25vw;
+  min-width: 250px;
+  max-width: 400px;
+
+  svg {
+    width: 100%;
+    height: auto;
   }
 }

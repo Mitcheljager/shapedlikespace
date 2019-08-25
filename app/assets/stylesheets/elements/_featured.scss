@@ -1,0 +1,40 @@
+.featured {
+  color: $white;
+  margin-bottom: $margin * 6;
+}
+
+.featured__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: $margin;
+}
+
+.featured__item {
+  position: relative;
+  border-radius: $border-radius * 2;
+  overflow: hidden;
+  transition: box-shadow 100ms;
+
+  &:hover,
+  &:active {
+    box-shadow: $box-shadow;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.featured__item-content {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.featured__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}

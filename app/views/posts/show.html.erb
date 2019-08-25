@@ -4,18 +4,23 @@
 
 <article class="post">
   <div class="post__image carousel">
-    <!-- <div class="model-viewer" data-role="model-viewer"></div> -->
-
-    <div data-role="carousel">
-      <% @post.images.each do |image| %>
-        <picture>
-          <source media="(min-width: 560px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
-          <source media="(min-width: 0px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
-          <%= image_tag image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>
-        </picture>
+    <% if @post.files.any? %>
+      <% @post.files.each do |file| %>
+        <div class="model-viewer" data-role="model-viewer"></div>
       <% end %>
-    </div>
+    <% end %>
 
+    <div class="carousel__wrapper">
+      <div data-role="carousel">
+        <% @post.images.each do |image| %>
+          <picture>
+            <source media="(min-width: 560px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
+            <source media="(min-width: 0px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
+            <%= image_tag image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>
+          </picture>
+        <% end %>
+      </div>
+    </div>
 
     <div class="carousel__navigation">
       <% @post.images.each_with_index do |image, index| %>
@@ -51,7 +56,13 @@
 
     <div>
       <% @post.files.each_with_index do |file, index| %>
-        <div><%= file.filename %></div>
+        <div>
+          <%= link_to asset_path rails_blob_path(file), target: "_blank" do %>
+            <%= file.filename %>
+          <% end %>
+
+          (<%= number_to_human_size file.byte_size %>)
+        </div>
       <% end %>
     </div>
   </aside>

@@ -4,6 +4,7 @@ $red: #b33834;
 $light: #ecf0f2;
 $gray: #ccd1d4;
 $primary: #a936de;
+$primary-dark: #2c0752;
 $secondary: #eb850d;
 
 $font-stack: "Lato", sans-serif;
@@ -21,5 +22,6 @@ $media-min-widths: (
   sm: 560px,
   md: 768px,
   lg: 900px,
-  xl: 1100px
+  xl: 1100px,
+  xxl: 1300px
 )

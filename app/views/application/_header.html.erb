@@ -1,7 +1,7 @@
 <header class="header">
   <nav class="navigation">
     <div class="navigation__main">
-      <%= link_to inline_svg("logo.svg"), root_path %>
+      <%= link_to inline_svg("logo.svg"), root_path, class: "navigation__logo" %>
 
       <%= link_to "Discover", discover_path, class: "navigation__item" %>
     </div>
@@ -21,8 +21,7 @@
 
       <%= link_to "Create", new_post_path, class: "button button--alternative button--inline" %>
     </div>
-
   </nav>
 
-  <%= inline_svg "layout/header-bubbles.svg", class: "header__bubbles" %>
+  <%= inline_svg "layout/header-bubbles.svg", class: "header__bubbles" unless controller_name == "frontpage"  %>
 </header>
