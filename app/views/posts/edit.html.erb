@@ -1,5 +1,5 @@
 <% content_for :page_title, "Editing..." %>
 
-<h1>Editing "<%= @post.title %>"</h1>
+<%= inline_svg "layout/background-blobs-header-1.svg", class: "header__blobs" %>
 
 <%= render "form", post: @post, path: post_path(@post.slug) %>

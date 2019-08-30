@@ -2,11 +2,12 @@
   display: inline-block;
   width: 100%;
   height: 60px;
-  padding: 0.5rem 1.5rem;
-  border: 2px solid #ccd1d4;
+  padding: .5rem 1.5rem;
+  border: 0;
   border-radius: 100px;
-  background: $white;
+  background: lighten($light, 3%);
   font-size: $font-size-base;
+  font-family: "Lato", sans-serif;
 
   &:focus {
     outline: none;
@@ -16,6 +17,24 @@
     font-style: italic;
     font-family: $font-stack;
   }
+
+  &--large {
+    width: 100%;
+    height: 80px;
+    padding: 1rem 2rem;
+    border: 0;
+    background: $white;
+    font-size: 21px;
+    font-weight: bold;
+    line-height: 1.5em;
+    box-shadow: $box-shadow;
+    transition: box-shadow 200ms;
+
+    @include media-min(sm) {
+      font-size: 24px;
+      line-height: 1.5em;
+    }
+  }
 }
 
 .form-textarea {
@@ -23,6 +42,9 @@
   min-height: 300px;
   padding: $margin / 2;
   border-radius: $border-radius;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  resize: none;
 
   &--small {
     min-height: 150px;
@@ -31,7 +53,9 @@
 
 .form-label {
   display: block;
+  margin-bottom: $margin / 4;
   font-size: 18px;
+  font-weight: 900;
 }
 
 .form-group {
@@ -51,6 +75,10 @@
   appearance: none;
   width: 100%;
   border: 0;
+  border-radius: $border-radius;
+  padding: 1rem;
+  background: lighten($light, 3%);
+  font-family: "Lato", sans-serif;
   font-size: 18px;
   cursor: pointer;
 
@@ -104,12 +132,11 @@ input[type="checkbox"] {
 }
 
 .form-hint {
+  margin-bottom: $margin / 2;
   font-size: 14px;
+  color: lighten($black, 30%);
   line-height: 1.25em;
   font-style: italic;
-
-  label + & {
-  }
 }
 
 .field_with_errors {
@@ -128,4 +155,13 @@ input[type="checkbox"] {
 
 .error-block__title {
   font-size: 21px;
+}
+
+.hidden-field {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  left: 0;
+  top: 0;
 }

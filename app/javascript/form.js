@@ -7,13 +7,6 @@ import Uploader from "uploader"
 document.addEventListener("turbolinks:load", function() {
   bindDropzone()
   buildSortable()
-
-  const form = document.querySelector("[data-role='post-form']")
-
-  if (!form) return
-
-  form.removeEventListener("submit", initiatePostForm)
-  form.addEventListener("submit", initiatePostForm)
 })
 
 function bindDropzone() {
@@ -82,6 +75,7 @@ function readSTL(file) {
     drawSTLOnCanvas(file)
 
     new Uploader(file, "files")
+    addToFileList(file)
   }
 }
 
@@ -204,7 +198,6 @@ function drawSTLOnCanvas(file) {
         image.src = event.target.result
 
         image.onload = () => {
-
           drawAndRenderThumbnail(image)
         }
       }
@@ -224,6 +217,13 @@ function buildSortable() {
   })
 }
 
-function initiatePostForm(event) {
+function addToFileList(file) {
+  console.log(file)
+  const fileListElement = document.querySelector("[data-role='file-list']")
 
+  const newElement = document.createElement("div")
+  newElement.classList.add("file-list__item")
+  newElement.innerText = file.name
+
+  fileListElement.append(newElement)
 }

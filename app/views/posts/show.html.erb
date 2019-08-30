@@ -63,7 +63,7 @@
     Hotness: <%= @post.hotness %>
 
     <div>
-      <% @post.files.each_with_index do |file, index| %>
+      <% @post.files.each do |file| %>
         <div>
           <%= link_to asset_path rails_blob_path(file), target: "_blank" do %>
             <%= file.filename %>
