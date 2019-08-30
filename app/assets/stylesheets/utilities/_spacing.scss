@@ -2,6 +2,10 @@
   margin-top: $margin;
 }
 
+.top-offset-half {
+  margin-top: $margin / 2;
+}
+
 .top-offset-small {
   margin-top: $margin / 4;
 }

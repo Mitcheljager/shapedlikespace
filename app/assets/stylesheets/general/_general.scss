@@ -45,4 +45,19 @@ hr {
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
+
+  &--tiny {
+    max-width: 400px;
+  }
+}
+
+.box {
+  padding: $margin / 2;
+  border-radius: $border-radius;
+  background: $white;
+  box-shadow: $box-shadow;
+}
+
+.background-light {
+  background: lighten($light, 3%);
 }

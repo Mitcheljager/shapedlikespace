@@ -1,7 +1,15 @@
 <% content_for :page_title, "Create an account" %>
 
-<h1>Create an account</h1>
+<%= inline_svg "layout/background-blobs-header-2.svg", class: "header__blobs" %>
 
-<%= render "form", user: @user, url: users_path %>
+<div class="wrapper wrapper--tiny top-offset text-center">
+  <div class="box">
+    <h1 class="mt-0 mb-0">Create an account</h1>
 
-<p><small>Already have an account? <%= link_to "Log in", login_path %></small></p>
+    <%= render "form", user: @user, url: users_path %>
+  </div>
+
+  <div class="top-offset">
+    <small>Already have an account? <%= link_to "Log in", login_path %></small>
+  </div>
+</div>

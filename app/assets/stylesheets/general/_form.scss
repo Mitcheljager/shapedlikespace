@@ -59,7 +59,7 @@
 }
 
 .form-group {
-  margin-top: $margin;
+  margin-top: $margin / 2;
 }
 
 .form-group-columns {
@@ -107,12 +107,14 @@
     appearance: none;
     width: 1rem;
     height: 1rem;
-    margin: 0;
+    margin: 1px 0 0;
+    border: 2px solid $gray;
     border-radius: 2px;
     cursor: pointer;
 
     &:checked {
       border: 0;
+      background: $secondary;
     }
 
     &:focus {
@@ -122,6 +124,7 @@
 
   label {
     padding-left: 1rem;
+    font-size: 16px;
     cursor: pointer;
   }
 }
