@@ -5,9 +5,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 let camera, scene, renderer, controls, geometry, material, mesh
 
 document.addEventListener("turbolinks:load", function() {
-  const element = document.querySelector("[data-role='model-viewer']")
+  const elements = document.querySelectorAll("[data-role='model-viewer']")
 
-  if (element) buildModelViewer(element)
+  elements.forEach(element => { buildModelViewer(element) })
 })
 
 function buildModelViewer(element, controllable = true) {

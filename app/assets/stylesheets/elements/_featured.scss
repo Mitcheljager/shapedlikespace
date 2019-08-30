@@ -11,6 +11,7 @@
 
 .featured__item {
   position: relative;
+  background: $light;
   border-radius: $border-radius * 2;
   overflow: hidden;
   transition: box-shadow 100ms;

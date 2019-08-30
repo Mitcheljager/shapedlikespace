@@ -1,0 +1,14 @@
+<% if current_user %>
+  <%= form_for :comment, url: comments_path, remote: true, html: { class: "comment-form" } do |form| %>
+    <%= form.hidden_field :post_id, value: post.id %>
+    <%= form.hidden_field :parent_id, value: parent_id if defined?(parent_id) %>
+
+    <div class="form-group">
+      <%= form.text_area :content, class: "form-input form-textarea form-textarea--small", placeholder: "Comment...", data: { role: "comment-input" } %>
+    </div>
+
+    <%= button_tag "Comment", class: "button button--primary button--inline top-offset-small" %>
+  <% end %>
+<% else %>
+  <%= link_to "Login", login_path %> or <%= link_to "Sign up", new_user_path %> to place a comment.
+<% end %>

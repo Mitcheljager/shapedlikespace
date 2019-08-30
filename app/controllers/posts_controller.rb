@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     @posts = Post.search(params[:search]).records.page params[:page]
   end
 
-  def show
+  def show    
     impressionist(@post)
   end
 

@@ -13,12 +13,8 @@ body {
 }
 
 body {
-  padding: 0 10vw;
+  padding: 0 5vw;
   font-family: $font-stack;
-
-  @include media-min(sm) {
-    padding: 0 10vw;
-  }
 }
 
 a {
@@ -32,6 +28,18 @@ pre {
 
 code {
   max-width: 100%;
+}
+
+hr {
+  height: 1px;
+  width: 100%;
+  margin: $margin 0;
+  border: 0;
+  background: $gray;
+
+  @include media-min(md) {
+    margin: $margin * 2 0;
+  }
 }
 
 .wrapper {

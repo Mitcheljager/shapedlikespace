@@ -1,0 +1,78 @@
+.comments {
+}
+
+@keyframes comment-has-been-added {
+  from {
+    background: $light;
+    box-shadow: 0 0 0 $margin / 4 $light;
+  }
+
+  to {
+    background: transparent;
+    box-shadow: 0 0 0 $margin / 4 transparent;
+  }
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  grid-gap: $margin / 2;
+  margin-bottom: $margin / 2;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .comment__main > & {
+    margin-top: $margin;
+  }
+
+  + .comment {
+    margin-top: 0;
+  }
+
+  &--has-been-added {
+    border-radius: $border-radius / 2;
+    animation: comment-has-been-added 2000ms forwards;
+  }
+
+  &--is-being-removed {
+    opacity: 0;
+    transition: opacity 1000ms;
+  }
+}
+
+.comment__information {
+  margin-top: .25em;
+  line-height: 1em;
+}
+
+.comment__content {
+  margin: $margin / 2 0;
+}
+
+.comment__actions {
+  margin: $margin / 2 0;
+}
+
+.comment__action {
+  display: inline-block;
+  margin-right: $margin / 2;
+  font-size: 14px;
+  text-transform: lowercase;
+}
+
+.comment__author {
+  margin-right: $margin / 2;
+}
+
+.comment__date {
+  font-size: 14px;
+  font-style: italic;
+  text-transform: lowercase;
+  color: darken($gray, 10%);
+}
+
+.comment-form {
+  margin-bottom: $margin * 2;
+}

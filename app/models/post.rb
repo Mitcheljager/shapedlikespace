@@ -7,7 +7,9 @@ class Post < ApplicationRecord
   is_impressionable counter_cache: true, unique: true
 
   belongs_to :user
+  
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many_attached :images, dependent: :destroy
   has_many_attached :files, dependent: :destroy
 

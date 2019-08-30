@@ -5,18 +5,16 @@
 <article class="post">
   <div class="post__image carousel">
     <% if @post.files.any? %>
-      <% @post.files.each do |file| %>
-        <div class="model-viewer" data-role="model-viewer"></div>
-      <% end %>
+      <div class="model-viewer" data-role="model-viewer"></div>
     <% end %>
 
     <div class="carousel__wrapper">
       <div data-role="carousel">
         <% @post.images.each do |image| %>
           <picture>
-            <source media="(min-width: 560px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
-            <source media="(min-width: 0px)" srcset="<%= url_for image.variant(quality: 85, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
-            <%= image_tag image.variant(quality: 85, resize_to_fill: [770, 480]).processed %>
+            <source media="(min-width: 560px)" srcset="<%= url_for image.variant(quality: 90, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
+            <source media="(min-width: 0px)" srcset="<%= url_for image.variant(quality: 90, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
+            <%= image_tag image.variant(quality: 90, resize_to_fill: [770, 480]).processed %>
           </picture>
         <% end %>
       </div>
@@ -25,7 +23,7 @@
     <div class="carousel__navigation">
       <% @post.images.each_with_index do |image, index| %>
         <div class="carousel__item" data-action="carousel-go-to" data-target="<%= index %>">
-          <%= image_tag image.variant(quality: 85, resize_to_fill: [120, 120]).processed %>
+          <%= image_tag image.variant(quality: 90, resize_to_fill: [120, 120]).processed %>
         </div>
       <% end %>
     </div>
@@ -35,6 +33,16 @@
     <h1 class="mt-0"><%= @post.title %></h1>
 
     <%= markdown(@post.description) %>
+
+    <hr>
+
+    <h1><span data-role="comment-total"><%= @post.comments.count %></span> Comments</h1>
+
+    <%= render "comments/form", post: @post %>
+
+    <div class="comments" data-role="comments">
+      <%= render @post.comments.where(parent_id: nil).order(created_at: :desc) %>
+    </div>
   </main>
 
   <aside class="post__top-sidebar">

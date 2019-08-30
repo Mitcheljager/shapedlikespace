@@ -5,7 +5,11 @@ h4,
 h5,
 h6 {
   font-weight: 900;
-  margin: $margin * 2 0;
+  margin: $margin 0;
+
+  @include media-min(md) {
+    margin: $margin * 2 0;
+  }
 }
 
 h1 {
