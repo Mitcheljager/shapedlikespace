@@ -14,7 +14,7 @@
   transition: box-shadow 100ms, background-color 100ms;
 
   &--is-active {
-    background: $light;
+    background: lighten($light, 3%);
     border: 0;
     box-shadow: $box-shadow;
   }

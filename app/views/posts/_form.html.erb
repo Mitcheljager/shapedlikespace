@@ -57,7 +57,7 @@
         <h3 class="file-list__title">Files</h3>
 
         <% @post.files.each do |file| %>
-          <div class="file-list__item">
+          <div class="file-list__item" data-file="<%= file.filename %>">
             <%= file.filename %>
           </div>
         <% end %>
@@ -83,7 +83,7 @@
         <%= form.select :categories, options_for_select(categories, (JSON.parse(@post.categories) if @post.categories)), { include_hidden: false }, { multiple: true, size: 5, class: "form-select" } %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group top-offset">
         <%= form.label :tags, class: "form-label" %>
 
         <div class="form-hint">

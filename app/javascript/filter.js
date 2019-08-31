@@ -24,7 +24,5 @@ function submitFilter(event) {
   if (toElement.value != "") filter = filter.concat(`/to/${ toElement.value }`)
   if (searchElement.value != "") filter = filter.concat(`/search/${ searchElement.value }`)
 
-  console.log(filter)
-
   window.location.href = filter
 }

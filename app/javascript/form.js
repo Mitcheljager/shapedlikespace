@@ -218,11 +218,11 @@ function buildSortable() {
 }
 
 function addToFileList(file) {
-  console.log(file)
   const fileListElement = document.querySelector("[data-role='file-list']")
 
   const newElement = document.createElement("div")
   newElement.classList.add("file-list__item")
+  newElement.setAttribute("data-file", file.name)
   newElement.innerText = file.name
 
   fileListElement.append(newElement)

@@ -1,13 +1,14 @@
 <% content_for :page_title, "Your account" %>
 
-<h1>Your account</h1>
+<%= inline_svg "layout/background-blobs-header-2.svg", class: "header__blobs" %>
 
-You are logged in as <strong><%= current_user.username %></strong>
+<div class="wrapper wrapper--tiny top-offset text-center">
+  <div class="box">
+    <h1 class="mt-0 mb-0">Your account</h1>
 
-<p>
-  <%= link_to "Edit your account", edit_user_path, class: "button button--primary button--inline" %>
-</p>
+    <div class="top-offset">You are logged in as <strong><%= current_user.username %></strong></div>
 
-<p>
-  <%= link_to "Logout", logout_path, class: "button button--secondary button--inline" %>
-</p>
+    <%= link_to "Edit your account", edit_user_path, class: "button button--primary top-offset" %>
+    <%= link_to "Logout", logout_path, class: "button button--secondary top-offset-small" %>
+  </div>
+</div>

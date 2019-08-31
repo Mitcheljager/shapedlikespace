@@ -1,15 +1,21 @@
 <% content_for :page_title, "Edit your account" %>
 
-<h1>Editing your account</h1>
+<%= inline_svg "layout/background-blobs-header-2.svg", class: "header__blobs" %>
 
-<%= render "form", user: @user, url: update_user_path %>
+<div class="wrapper wrapper--tiny top-offset text-center">
+  <div class="box">
+    <h1 class="mt-0 mb-0">Editing your account</h1>
 
-<div class="form-danger-zone">
-  Danger zone!
+    <%= render "form", user: @user, url: update_user_path %>
+  </div>
 
-  <%= link_to "Delete your account", destroy_user_path, method: :delete, data: { confirm: "Are you sure you wish to delete your account? This cannot be undone." } %>
+  <div class="form-danger-zone top-offset">
+    Danger zone!
 
-  <div class="form-hint">
-    Deleting your account is a permanent action and cannot be undone. Your account will be completely wiped from our database, along with any associations to it.
+    <%= link_to "Delete your account", destroy_user_path, method: :delete, data: { confirm: "Are you sure you wish to delete your account? This cannot be undone." } %>
+
+    <div class="form-hint">
+      Deleting your account is a permanent action and cannot be undone. Your account will be completely wiped from our database, along with any associations to it.
+    </div>
   </div>
 </div>
