@@ -33,9 +33,7 @@ class Uploader {
 
     if (!element) return
 
-    console.log(event)
-
-    const progressPercentage = (100 / event.total) * event.loaded
+    const progressPercentage = Math.round((100 / event.total) * event.loaded)
     let progressElement = element.querySelector(".file-list__progress")
 
     if (!progressElement) {
@@ -44,10 +42,13 @@ class Uploader {
       element.append(progressElement)
     }
 
+    progressElement.style.width = progressPercentage + "%"
+
     if (progressPercentage == 100) {
       progressElement.remove()
-    } else {
-      progressElement.style.width = progressPercentage + "%"
+
+      element.classList.add("file-list__item--upload-successful")
+      setTimeout(() => { element.classList.remove("file-list__item--upload-successful") }, 500)
     }
   }
 }
