@@ -20,6 +20,10 @@ html {
     --box-shadow: #{ $box-shadow-dark };
     --gray: #{ lighten($dark, 10%) };
   }
+
+  &.simple-mode {
+    --box-shadow: 0 0 0 1px var(--gray);
+  }
 }
 
 html,

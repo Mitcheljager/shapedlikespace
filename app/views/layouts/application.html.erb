@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="<%= "dark-mode" if current_user && current_user.dark_mode? %>">
+<html lang="en" class="<%= "dark-mode" if current_user && current_user.dark_mode? %> <%= "simple-mode" if simple_mode? %>">
   <head>
     <title><%= yield(:page_title) != "" ? yield(:page_title) + " | shapedlike.space" : "shapedlike.space" %></title>
     <%= csrf_meta_tags %>

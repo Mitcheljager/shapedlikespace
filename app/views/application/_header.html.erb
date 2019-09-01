@@ -23,5 +23,9 @@
     </div>
   </nav>
 
-  <%= inline_svg "layout/header-bubbles.svg", class: "header__bubbles" unless controller_name == "frontpage"  %>
+  <% unless simple_mode? %>
+    <%= inline_svg "layout/header-bubbles.svg", class: "header__bubbles" unless controller_name == "frontpage" %>
+  <% else %>
+    <div class="header__background"></div>
+  <% end %>
 </header>

@@ -1,6 +1,10 @@
-<header class="hero">
-  <%= inline_svg "layout/full-bubbles.svg", class: "hero__bubbles" %>
-</header>
+<% unless simple_mode? %>
+  <header class="hero">
+    <%= inline_svg "layout/full-bubbles.svg", class: "hero__bubbles" %>
+  </header>
+<% else %>
+  <%= inline_svg "layout/background-blobs-header-2.svg", class: "header__blobs" %>
+<% end %>
 
 <div class="featured">
   <h1><center>Featured Creations</center></h1>

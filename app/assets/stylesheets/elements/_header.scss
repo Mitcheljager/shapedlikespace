@@ -5,6 +5,14 @@
   @media (min-width: 1920px) {
     margin-bottom: $margin * 4;
   }
+
+  .simple-mode & {
+    margin-bottom: 0;
+
+    .logo-cls-2 {
+      fill: var(--text);
+    }
+  }
 }
 
 .header__bubbles,
@@ -30,4 +38,14 @@
   path {
     fill: var(--background-shade);
   }
+}
+
+.header__background {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--background-shade);
+  height: 160px;
+  width: 100%;
+  z-index: -1;
 }

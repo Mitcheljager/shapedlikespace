@@ -1,6 +1,10 @@
 .featured {
   color: $white;
   margin-bottom: $margin * 6;
+
+  .simple-mode & {
+    color: var(--text);
+  }
 }
 
 .featured__items {

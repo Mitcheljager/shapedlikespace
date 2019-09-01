@@ -9,6 +9,7 @@
     <div class="top-offset">You are logged in as <strong><%= current_user.username %></strong></div>
 
     <%= button_to "Dark mode", update_user_path, controller: :user, method: :patch, params: { user: { dark_mode: !current_user.dark_mode } }, class: "switch__input", form_class: "switch #{ 'switch--active' if current_user.dark_mode? } top-offset" %>
+    <%= button_to "Simple mode", update_user_path, controller: :user, method: :patch, params: { user: { simple_mode: !current_user.simple_mode } }, class: "switch__input", form_class: "switch #{ 'switch--active' if current_user.simple_mode? } top-offset-small" %>
 
     <%= link_to "Edit your account", edit_user_path, class: "button button--primary top-offset" %>
     <%= link_to "Logout", logout_path, class: "button button--secondary top-offset-small" %>

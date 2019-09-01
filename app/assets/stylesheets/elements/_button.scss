@@ -42,6 +42,15 @@
       transform: translateX(-50%);
       opacity: .75;
       z-index: -1;
+
+    }
+
+    .simple-mode & {
+      background: $primary;
+
+      &::after {
+        display: none;
+      }
     }
   }
 

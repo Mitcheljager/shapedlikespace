@@ -6,7 +6,15 @@ module ApplicationHelper
       Rails.application.assets_manifest.assets[path].present?
     end
   end
-  
+
+  def simple_mode?
+    if current_user && current_user.simple_mode?
+      return true
+    else
+      return false
+    end
+  end
+
   def markdown(text)
     options = {
       escape_html: true,

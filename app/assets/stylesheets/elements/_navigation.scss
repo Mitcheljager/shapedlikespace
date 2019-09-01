@@ -64,6 +64,10 @@
       text-decoration: none;
     }
   }
+
+  .simple-mode & {
+    color: var(--text)
+  }
 }
 
 .navigation__logo {
