@@ -1,0 +1,43 @@
+.item-as-list {
+  display: flex;
+  align-items: center;
+  padding: $margin / 2;
+  border-bottom: 1px solid var(--background-shade);
+  color: var(--text);
+
+  &:hover,
+  &:active {
+    background: var(--background-content);
+  }
+
+  .dark-mode & {
+    border-bottom: 1px solid var(--gray);
+  }
+}
+
+.item-as-list__image {
+  margin-right: $margin / 2;
+  border-radius: $border-radius;
+}
+
+.item-as-list__content {
+  width: 100%;
+}
+
+.item-as-list__author {
+  font-size: 16px;
+}
+
+.item-as-list__title {
+  margin-top: 0;
+}
+
+.item-as-list__tray {
+  display: flex;
+  font-size: 16px;
+  text-transform: lowercase;
+
+  span {
+    margin-right: $margin / 4;
+  }
+}

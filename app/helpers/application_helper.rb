@@ -15,6 +15,14 @@ module ApplicationHelper
     end
   end
 
+  def list_mode?
+    if current_user && current_user.list_mode?
+      return true
+    else
+      return false
+    end
+  end
+
   def markdown(text)
     options = {
       escape_html: true,

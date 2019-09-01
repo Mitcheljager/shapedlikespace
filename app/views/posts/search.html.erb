@@ -2,8 +2,4 @@
 
 <h1><center>Searched Creations</center></h1>
 
-<main class="items">
-  <%= render @posts %>
-</main>
-
-<%= link_to "New post", new_post_path, class: "button" %>
+<%= render "posts", posts: @posts %>

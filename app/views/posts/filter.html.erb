@@ -4,10 +4,6 @@
 
 <h1><center>Filtered Creations (<%= number_to_human @posts.count %>)</center></h1>
 
-<main class="items">
-  <%= render @posts %>
-</main>
-
-<%= link_to "New post", new_post_path, class: "button button--secondary button--inline" %>
+<%= render "posts", posts: @posts %>
 
 <%= paginate @posts %>

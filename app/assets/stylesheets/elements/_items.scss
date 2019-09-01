@@ -16,6 +16,12 @@
   @include media-min(xl) {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
+  &--as-list {
+    display: block;
+    max-width: 800px;
+    margin: 0 auto;
+  }
 }
 
 .item {
@@ -30,7 +36,7 @@
 
   &:hover,
   &:active {
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
 
     .item__hover {
       opacity: 1;

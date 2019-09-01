@@ -26,12 +26,8 @@
 
 <h1><center>Popular Creations</center></h1>
 
-<main class="items">
-  <%= render @hot_posts %>
-</main>
+<%= render "posts/posts", posts: @hot_posts %>
 
 <h1><center>Recent Creations</center></h1>
 
-<main class="items">
-  <%= render @posts %>
-</main>
+<%= render "posts/posts", posts: @posts %>

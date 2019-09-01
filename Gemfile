@@ -23,6 +23,7 @@ gem "elasticsearch-rails", "~> 7"
 gem "bcrypt", :require => "bcrypt"
 gem "high_voltage", "~> 3.0.0"
 
+gem "aws-sdk-s3", require: false
 gem "mini_magick", ">= 4.9.5"
 gem "image_processing", "~> 1.2"
 gem "active_storage_validations"

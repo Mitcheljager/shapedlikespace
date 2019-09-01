@@ -1,0 +1,33 @@
+<%= link_to post_path(post.slug), class: "item-as-list" do %>
+  <% if post.images.any? %>
+    <%= image_tag post.images.first.variant(quality: 85, resize_to_fill: [120, 120]).processed, class: "item-as-list__image" %>
+  <% else %>
+    <%= image_tag "https://placehold.it/120x120", class: "item-as-list__image" %>
+  <% end %>
+
+  <div class="item-as-list__content">
+    <h3 class="item-as-list__title"><%= post.title %></h3>
+
+    <div class="item-as-list__tray">
+      <span>by <strong><%= post.user.username %></strong></span>
+
+      <span>
+        categories:
+
+        <% JSON.parse(post.categories).each do |category| %>
+          <strong><%= category %></strong>
+        <% end %>
+      </span>
+
+      <% if post.tags.present? %>
+        <span>
+          tags:
+
+          <% post.tags.tr("[]", "").split(", ").each do |tag| %>
+            <strong><%= tag %></strong>
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+<% end %>
