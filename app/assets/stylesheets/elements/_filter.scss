@@ -4,8 +4,8 @@
   flex-direction: column;
   padding: $margin;
   border-radius: $border-radius;
-  background: $white;
-  box-shadow: $box-shadow;
+  background: var(--background);
+  box-shadow: var(--box-shadow);
 
   @include media-min(xl) {
     flex-direction: row;
@@ -30,7 +30,7 @@
 
 .filter__link {
   font-size: 16px;
-  color: $black;
+  color: var(--text);
   font-weight: bold;
   text-transform: lowercase;
   margin: $margin / 2 0;
@@ -51,8 +51,8 @@
   border: 0;
   margin-bottom: $margin / 2;
   border-radius: 0;
-  border-bottom: 2px solid $black;
-  background: $white;
+  border-bottom: 2px solid var(--text);
+  background: var(--background);
   font-weight: 700;
 
   @include media-min(xl) {

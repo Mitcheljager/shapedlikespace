@@ -21,8 +21,8 @@
 
 .carousel__wrapper {
   border-radius: $border-radius;
-  background: $white;
-  box-shadow: 0 0 0 $margin / 4 $white;
+  background: var(--background);
+  box-shadow: 0 0 0 $margin / 4 var(--background);
 
   > div {
     border-radius: $border-radius;

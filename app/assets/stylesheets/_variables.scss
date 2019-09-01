@@ -3,6 +3,9 @@ $black: #39373a;
 $red: #b33834;
 $green: #357b35;
 $light: #ecf0f2;
+$lighter: lighten($light, 3%);
+$dark: #181c25;
+$darker: darken($dark, 3%);
 $gray: #ccd1d4;
 $primary: #a936de;
 $primary-dark: #2c0752;
@@ -17,6 +20,7 @@ $border-radius: 25px;
 $max-width: 1200px;
 
 $box-shadow: 0 30px 30px rgba($black, .075), 0 10px 10px rgba($black, .075);
+$box-shadow-dark: 0 30px 30px rgba(darken($black, 50%), .25), 0 10px 10px rgba(darken($black, 50%), .25);
 
 $media-min-widths: (
   xs: 400px,

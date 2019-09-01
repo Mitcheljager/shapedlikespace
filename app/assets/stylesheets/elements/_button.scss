@@ -46,16 +46,16 @@
   }
 
   &--secondary {
-    border: 2px solid $gray;
-    background: $white;
+    border: 2px solid var(--gray);
+    background: var(--background);
     overflow: hidden;
-    color: $black;
+    color: var(--text);
 
     &:hover,
     &:active {
-      background: $white;
+      background: var(--background);
       border-color: darken($gray, 10%);
-      box-shadow: $box-shadow;
+      box-shadow: var(--box-shadow);
     }
   }
 

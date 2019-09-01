@@ -26,4 +26,8 @@
   &--negative-offset {
     margin-top: -#{ $margin * 2 };
   }
+
+  path {
+    fill: var(--background-shade);
+  }
 }

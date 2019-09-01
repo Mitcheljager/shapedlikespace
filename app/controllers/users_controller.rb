@@ -44,10 +44,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    params[:user].delete(:password).delete(:password_confirmation) if params[:user][:password].blank?
-
     @user = current_user
-    if @user.update(user_params)
+
+    user_params.delete(:password) if user_params[:password].nil?
+
+    if current_user.update_attributes(user_params)
       redirect_to account_path
     else
       render :edit
@@ -70,6 +71,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
+    params.require(:user).permit(:username, :password, :password_confirmation, :dark_mode)
   end
 end

@@ -1,14 +1,14 @@
 .file-list {
-  background: $white;
+  background: var(--background);
   border-radius: $border-radius;
-  box-shadow: $box-shadow;
+  box-shadow: var(--box-shadow);
   overflow-y: hidden;
 }
 
 .file-list__item {
   position: relative;
   padding: .75rem $border-radius;
-  border-top: 1px solid $light;
+  border-top: 1px solid var(--background-shade);
   font-size: 16px;
   font-style: italic;
   transition: background-color 500ms;
@@ -21,17 +21,17 @@
 .file-list__title {
   margin: 0;
   padding: .75rem $border-radius;
-  background: lighten($light, 3%);
+  background: var(--background-content);
   text-transform: lowercase;
 }
 
 .file-list__progress {
   position: absolute;
   left: 0;
-  top: 0;
-  height: 100%;
+  bottom: 0;
+  height: 5px;
   width: 0;
   box-shadow: 2px 0 0 0 $primary;
-  background: rgba(darken($light, 40%), .05);
+  background: linear-gradient(105deg, $secondary 0%, $primary 100%);
   transition: width 200ms;
 }

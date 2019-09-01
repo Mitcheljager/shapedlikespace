@@ -5,7 +5,7 @@
   justify-content: center;
   width: 100%;
   min-height: 300px;
-  border: 2px dashed $gray;
+  border: 2px dashed var(--gray);
   padding: $margin;
   border-radius: $border-radius;
   text-align: center;
@@ -14,9 +14,9 @@
   transition: box-shadow 100ms, background-color 100ms;
 
   &--is-active {
-    background: lighten($light, 3%);
+    background: var(--background-content);
     border: 0;
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
   }
 
   * {
