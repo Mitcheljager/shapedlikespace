@@ -20,11 +20,11 @@
 
   &:focus {
     background: rgba($white, .7);
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
   }
 
   &::placeholder {
-    color: $primary-dark;
+    color: $dark;
     text-transform: lowercase;
     font-weight: 700;
     font-size: 16px;

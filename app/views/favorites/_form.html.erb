@@ -6,12 +6,16 @@
         remote: true,
         method: has_been_favorited ? :delete : :post,
         params: { favorite: { post_id: post.id } },
-        class: "favorite #{ "favorite--is-active" if has_been_favorited }" do %>
-      <%= inline_svg "icons/icon-heart#{ "-border" unless has_been_favorited }.svg" %>
+        class: "button button--secondary top-offset" do %>
+      <div class="favorite <%= "favorite--is-active" if has_been_favorited %>">
+        <%= inline_svg "icons/icon-heart#{ "-border" unless has_been_favorited }.svg" %>
+      </div>
     <% end %>
   </div>
 <% else %>
-  <%= link_to login_path, class: "favorite #{ "favorite--is-active" if has_been_favorited }" do %>
-    <%= inline_svg "icons/icon-heart#{ "-border" unless has_been_favorited }.svg" %>
+  <%= link_to login_path, class: "button button--secondary top-offset" do %>
+    <div class="favorite <%= "favorite--is-active" if has_been_favorited %>">
+      <%= inline_svg "icons/icon-heart#{ "-border" unless has_been_favorited }.svg" %>
+    </div>
   <% end %>
 <% end %>

@@ -5,7 +5,7 @@
 <article class="post">
   <div class="post__image carousel">
     <% if @post.files.any? %>
-      <div class="model-viewer" data-role="model-viewer"></div>
+      <!-- <div class="model-viewer" data-role="model-viewer"></div> -->
     <% end %>
 
     <div class="carousel__wrapper">
@@ -48,12 +48,12 @@
   <aside class="post__top-sidebar">
     <%= link_to "Download files", "#", class: "button button--primary" %>
 
-    <div class="button button--secondary top-offset">
-      <%= render "favorites/form", post: @post %>
-    </div>
+    <%= render "favorites/form", post: @post %>
 
     <%= link_to "Add a make", "#", class: "button button--secondary" %>
     <%= link_to "Add to collection", "#", class: "button button--secondary" %>
+
+    <%= link_to "Edit your post", edit_post_path(@post.slug), class: "button button--secondary top-offset" if @post.user == current_user %>
   </aside>
 
   <aside class="post__content-sidebar">

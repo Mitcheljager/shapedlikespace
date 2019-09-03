@@ -18,7 +18,7 @@ html {
     --background-shade: #{ darken($dark, 6%) };
     --background-content: #{ $darker };
     --box-shadow: #{ $box-shadow-dark };
-    --gray: #{ lighten($dark, 10%) };
+    --gray: #{ lighten($dark, 15%) };
   }
 
   &.simple-mode {

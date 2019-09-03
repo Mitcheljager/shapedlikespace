@@ -17,7 +17,7 @@
 
   @media (min-width: 1250px) {
     grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
-    grid-column-gap: 100px;
+    grid-gap: 100px;
   }
 }
 

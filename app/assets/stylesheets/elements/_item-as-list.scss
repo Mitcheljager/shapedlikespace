@@ -1,9 +1,13 @@
 .item-as-list {
   display: flex;
   align-items: center;
-  padding: $margin / 2;
+  padding: $margin / 2 0;
   border-bottom: 1px solid var(--background-shade);
   color: var(--text);
+
+  @include media-min(sm) {
+    padding: $margin / 2;
+  }
 
   &:hover,
   &:active {
@@ -34,6 +38,7 @@
 
 .item-as-list__tray {
   display: flex;
+  flex-wrap: wrap;
   font-size: 16px;
   text-transform: lowercase;
 

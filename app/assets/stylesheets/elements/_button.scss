@@ -16,6 +16,10 @@
   transition: box-shadow 50ms;
   cursor: pointer;
 
+  &:focus {
+    outline: none;
+  }
+
   &--primary {
     background: linear-gradient(105deg, $secondary 0%, $primary 100%);
     color: $white;
@@ -93,7 +97,7 @@
     &:active {
       background: lighten($secondary, 5%);
       color: $white;
-      box-shadow: $box-shadow;
+      box-shadow: var(--box-shadow);
     }
   }
 
