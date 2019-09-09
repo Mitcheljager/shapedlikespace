@@ -1,0 +1,10 @@
+<% return unless current_user %>
+
+<%= form_for :collection_post, url: collection_posts_path, remote: true do |form| %>
+  <%= form.hidden_field :collection_id, value: collection.id %>
+  <%= form.hidden_field :post_id, value: @post.id %>
+
+  <% current_collection_post = current_user.collection_posts.where(collection_id: collection.id, post_id: @post.id) %>
+
+  <%= button_tag collection.title + "#{ " ✓" if current_collection_post.any? }", class: "dropdown__item" %>
+<% end %>

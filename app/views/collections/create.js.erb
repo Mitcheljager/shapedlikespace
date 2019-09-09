@@ -1,0 +1,10 @@
+(() => {
+  const element = document.querySelector("[data-role~='collections-dropdown']").querySelector("[data-role='dropdown-content']")
+
+  const newElement = document.createElement("div")
+  newElement.innerHTML = `<%= j render "collections/dropdown" %>`
+
+  newElementContent = newElement.querySelector("[data-role='dropdown-content']").outerHTML
+
+  element.outerHTML = newElementContent
+})()

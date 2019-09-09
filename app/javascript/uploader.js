@@ -13,7 +13,7 @@ class Uploader {
 
     upload.create((error, blob) => {
       if (error) {
-        console.log(error)
+        alert(error)
       } else{
         const hiddenField = document.createElement("input")
         hiddenField.setAttribute("type", "hidden")

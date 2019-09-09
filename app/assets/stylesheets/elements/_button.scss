@@ -47,6 +47,9 @@
       opacity: .75;
       z-index: -1;
 
+      .dark-mode & {
+        background: darken($black, 50%);
+      }
     }
 
     .simple-mode & {

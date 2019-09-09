@@ -1,0 +1,7 @@
+<h1><center><%= @collection.title %></center></h1>
+
+<main class="items <%= "items--as-list" if list_mode? %>">
+  <% @collection.collection_posts.each do |collection_post| %>
+    <%= render partial: list_mode? ? "posts/post_list_mode" : "posts/post", locals: { post: collection_post.post } %>
+  <% end %>
+</main>

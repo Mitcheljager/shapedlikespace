@@ -14,7 +14,7 @@
       <%= link_to post_path(post.slug), class: "featured__item" do %>
         <div class="featured__item-content">
           <% if post.images.any? %>
-            <%= image_tag post.images.first.variant(quality: 85, resize_to_fill: [370, 370]).processed, class: "featured__image" %>
+            <%= image_tag post.images.first.variant(quality: 95, resize_to_fill: [370, 370]).processed, class: "featured__image" %>
           <% else %>
             <%= image_tag "https://placehold.it/370x370", class: "featured__image" %>
           <% end %>

@@ -1,0 +1,84 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdown__content {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  padding: $margin / 4 0;
+  border-radius: $border-radius;
+  background: var(--background-content);
+  box-shadow: var(--box-shadow);
+  transform: translateY(100%);
+  overflow: hidden;
+  z-index: 50;
+
+  &--is-active {
+    display: block;
+  }
+}
+
+.dropdown__item {
+  display: block;
+  width: 100%;
+  padding: .5em $margin / 2;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background: var(--background-shade);
+    outline: none;
+  }
+
+  &--tray {
+    display: none;
+    margin-top: $margin / 4;
+    border-top: 1px solid var(--background-shade);
+  }
+
+  &--is-visible {
+    display: block;
+  }
+}
+
+.dropdown__form {
+  display: flex;
+  padding: $margin / 2 $margin / 2 $margin / 4;
+  margin-top: $margin / 4;
+  border-top: 1px solid var(--background-shade);
+
+  input {
+    height: 100%;
+    width: 100%;
+    background: var(--background-shade);
+
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+
+  button {
+    max-width: 80px;
+    margin: 0 0 0 $margin / 4;
+    padding: .8em 1em;
+    font-size: 14px;
+  }
+
+  .form-group {
+    margin: 0;
+  }
+}

@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     get "(page/:page)", action: :index, on: :collection, as: ""
   end
 
+  resources :collections, param: :slug, concerns: :paginatable, except: [:edit, :update]
+  resources :collection_posts, params: :id, except: [:index, :edit, :update]
+
   get "discover(/page/:page)", to: "posts#index", as: "discover"
   get "discover(/category/:category)(/sort/:sort)(/from/:from)(/to/:to)(/search/:search)(/page/:page)", to: "posts#filter", as: "filter"
   resources :posts, path: "", param: :slug, concerns: :paginatable, except: [:index]

@@ -8,6 +8,8 @@
     </div>
 
     <%= button_tag "Comment", class: "button button--primary button--inline top-offset-small" %>
+    
+    <small>Max 2000 characters</small>
   <% end %>
 <% else %>
   <%= link_to "Login", login_path %> or <%= link_to "Sign up", new_user_path %> to place a comment.

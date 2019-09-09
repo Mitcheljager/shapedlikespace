@@ -10,11 +10,13 @@ class Post < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :collection_posts
   has_many_attached :images, dependent: :destroy
   has_many_attached :files, dependent: :destroy
 
   validates :user_id, presence: true
   validates :title, presence: true, length: { minimum: 5, maximum: 75 }
+  validates :slug, presence: true, uniqueness: true
   validates :categories, presence: true
   validates :tags, length: { maximum: 50 }
   validates :images, attached: true,

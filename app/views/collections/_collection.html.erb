@@ -1,0 +1,15 @@
+<%= link_to collection_path(collection.slug), class: "item" do %>
+  <div class="item__content item__content--large">
+    <%= collection.title.truncate(30) %>
+  </div>
+
+  <div class="item__image collection">
+    <% collection.collection_posts.find(collection.collection_posts.pluck(:id).sample(4)).each do |collection_post| %>
+      <% if collection_post.post.images.any? %>
+        <%= image_tag collection_post.post.images.first.variant(quality: 90, resize_to_fill: [188, 188]).processed %>
+      <% else %>
+        <%= image_tag "https://placehold.it/188x188" %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

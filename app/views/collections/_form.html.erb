@@ -1,0 +1,13 @@
+<% if current_user %>
+  <%= form_for :collection, url: collections_path, remote: true, html: { class: "dropdown__form" } do |form| %>
+    <%= form.hidden_field :post_id, value: @post.id %>
+
+    <div class="form-group">
+      <%= form.text_field :title, class: "form-input", placeholder: "new collection" %>
+    </div>
+
+    <%= button_tag "Add", class: "button button--secondary" %>
+  <% end %>
+<% else %>
+  <%= link_to "Login", login_path %> or <%= link_to "Sign up", new_user_path %> to create to collection.
+<% end %>

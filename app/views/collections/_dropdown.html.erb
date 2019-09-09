@@ -1,0 +1,11 @@
+<div class="dropdown top-offset-small" data-role="dropdown collections-dropdown" data-action="toggle-dropdown-content">
+  <%= link_to "Add to collection", "#", class: "button button--secondary bottom-offset-small" %>
+
+  <div class="dropdown__content" data-role="dropdown-content">
+    <% current_user.collections.each do |collection| %>
+      <%= render "collection_posts/form", collection: collection %>
+    <% end %>
+
+    <%= render "collections/form" %>
+  </div>
+</div>

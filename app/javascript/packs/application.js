@@ -11,6 +11,7 @@ require("channels")
 import "carousel"
 import "model-viewer"
 import "form"
+import "dropdown"
 import "input-dropdown"
 import "filter"
 import "textarea"

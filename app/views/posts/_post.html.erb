@@ -8,11 +8,11 @@
     <h3 class="item__hover-title"><%= post.title.truncate(50) %></h3>
     <span class="item__hover-author"><%= post.user.username %></span>
 
-    <div class="button button--ghost button--inline">View</div>
+    <div class="button button--ghost button--inline top-offset-small">View</div>
   </div>
 
   <% if post.images.any? %>
-    <%= image_tag post.images.first.variant(quality: 85, resize_to_fill: [263, 263]).processed, class: "item__image" %>
+    <%= image_tag post.images.first.variant(quality: 90, resize_to_fill: [263, 263]).processed, class: "item__image" %>
   <% else %>
     <%= image_tag "https://placehold.it/263x263", class: "item__image" %>
   <% end %>

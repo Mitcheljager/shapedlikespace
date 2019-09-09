@@ -1,0 +1,10 @@
+<%= inline_svg "layout/background-blobs-header-2.svg", class: "header__blobs header__blobs--negative-offset" %>
+
+<h1><center>Recent Collections</center></h1>
+
+<main class="items items--large">
+  <%= render @collections %>
+</main>
+
+
+<%= paginate @collections %>
