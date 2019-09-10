@@ -6,5 +6,5 @@
 
   <% current_collection_post = current_user.collection_posts.where(collection_id: collection.id, post_id: @post.id) %>
 
-  <%= button_tag collection.title + "#{ " ✓" if current_collection_post.any? }", class: "dropdown__item" %>
+  <%= button_tag collection.title + "#{ " ✓" if current_collection_post.any? }", class: "dropdown__item #{ "dropdown__item--inactive" if !current_collection_post.any? }" %>
 <% end %>

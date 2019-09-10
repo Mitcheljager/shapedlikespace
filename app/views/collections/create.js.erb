@@ -9,5 +9,5 @@
   element.outerHTML = newElementContent
 
   document.body.insertAdjacentHTML("afterBegin", "<toast-message><strong><%= @collection.title %></strong> has been created</toast-message>")
-  document.body.insertAdjacentHTML("afterBegin", "<toast-message><strong>This post was added to <strong><%= @collection.title %></strong></toast-message>")
+  document.body.insertAdjacentHTML("afterBegin", "<toast-message>This post was added to <strong><%= @collection.title %></strong></toast-message>")
 })()

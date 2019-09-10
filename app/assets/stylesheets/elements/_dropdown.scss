@@ -55,6 +55,16 @@
   &--is-visible {
     display: block;
   }
+
+  &--inactive {
+    opacity: .75;
+  }
+}
+
+.dropdown__hint {
+  padding: .5em $margin / 2;
+  font-style: italic;
+  font-size: 16px;
 }
 
 .dropdown__form {

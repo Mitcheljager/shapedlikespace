@@ -30,5 +30,5 @@ function setActiveItem() {
   const activeElement = document.querySelector(".carousel__item--is-active")
 
   if (activeElement) activeElement.classList.remove("carousel__item--is-active")
-  navigationElements[this.currentSlide].classList.add("carousel__item--is-active")
+  if (navigationElements.length) navigationElements[this.currentSlide].classList.add("carousel__item--is-active")
 }
