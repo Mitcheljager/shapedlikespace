@@ -11,6 +11,8 @@ html {
   --background-content: #{ $lighter };
   --box-shadow: #{ $box-shadow };
   --gray: #{ $gray };
+  --green: #{ $green };
+  --red: #{ $red };
 
   &.dark-mode {
     --text: #{ lighten($dark, 70%) };

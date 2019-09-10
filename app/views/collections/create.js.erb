@@ -4,7 +4,10 @@
   const newElement = document.createElement("div")
   newElement.innerHTML = `<%= j render "collections/dropdown" %>`
 
-  newElementContent = newElement.querySelector("[data-role='dropdown-content']").outerHTML
+  const newElementContent = newElement.querySelector("[data-role='dropdown-content']").outerHTML
 
   element.outerHTML = newElementContent
+
+  document.body.insertAdjacentHTML("afterBegin", "<toast-message><strong><%= @collection.title %></strong> has been created</toast-message>")
+  document.body.insertAdjacentHTML("afterBegin", "<toast-message><strong>This post was added to <strong><%= @collection.title %></strong></toast-message>")
 })()

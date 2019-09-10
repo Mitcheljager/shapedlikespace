@@ -8,8 +8,12 @@ class CollectionPostsController < ApplicationController
 
     if @current_collection_post
       destroy
+
+      @message = "This post was removed from"
     else
       if @collection_post.save
+        @message = "This post was added to"
+
         respond_to do |format|
           format.js
         end

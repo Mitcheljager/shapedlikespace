@@ -1,0 +1,41 @@
+@keyframes toast-fly-in {
+  from {
+    transform: translateX(calc(100% + 1rem));
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+toast-message {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  bottom: 1rem;
+  right: 1rem;
+  padding: .75em 1.5em;
+  border-radius: 99px;
+  background: var(--background-shade);
+  font-size: 16px;
+  color: var(--text);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  z-index: 1000;
+  animation: toast-fly-in 500ms forwards;
+  transition: opacity 250ms;
+  cursor: pointer;
+
+  &.is-fading-out {
+    opacity: 0;
+  }
+
+  &::part(progress) {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(105deg, $secondary 0%, $primary 100%);
+    transition: width 3000ms linear;
+  }
+}

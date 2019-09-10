@@ -13,12 +13,14 @@
   bottom: 0;
   width: 100%;
   height: auto;
+  max-height: 400px;
   padding: $margin / 4 0;
   border-radius: $border-radius;
   background: var(--background-content);
   box-shadow: var(--box-shadow);
   transform: translateY(100%);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   z-index: 50;
 
   &--is-active {

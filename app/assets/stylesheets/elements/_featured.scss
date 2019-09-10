@@ -30,6 +30,10 @@
     display: block;
     padding-bottom: 100%;
   }
+
+  .simple-mode & {
+    border: $margin / 4 solid var(--background);
+  }
 }
 
 .featured__item-content {
