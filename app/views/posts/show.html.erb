@@ -10,11 +10,11 @@
 
     <div class="carousel__wrapper">
       <div data-role="carousel">
-        <% @post.images.each do |image| %>
+        <% @post.images.each_with_index do |image, index| %>
           <picture>
-            <source media="(min-width: 560px)" srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
-            <source media="(min-width: 0px)" srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
-            <%= image_tag image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>
+            <source media="(min-width: 560px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
+            <source media="(min-width: 0px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
+            <img <%= "data-" if index >= 2 %>src="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" %>
           </picture>
         <% end %>
       </div>
