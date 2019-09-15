@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
     @model = @model_name.find(favorite_params[:favoritable_id])
 
     if @favorite.save!
-      @model.increment!(:hotness) if @model_name == "Post"
+      @model.increment!(:hotness) if @model_name.name == "Post"
 
       respond_to do |format|
         format.js
@@ -24,7 +24,7 @@ class FavoritesController < ApplicationController
     @model = @model_name.find(favorite_params[:favoritable_id])
 
     if @favorite.destroy
-      @model.increment!(:hotness, -1) if @model_name == "Post"
+      @model.increment!(:hotness, -1) if @model_name.name == "Post"
 
       respond_to do |format|
         format.js
