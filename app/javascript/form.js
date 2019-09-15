@@ -46,7 +46,7 @@ async function dropzoneDrop(event) {
 
       if (file.type == "image/png" || file.type == "image/jpg" || file.type == "image/jpeg") {
         readImage(file)
-      } else if (file.name.endsWith(".stl")) {
+      } else if (file.name.endsWith(".stl") || file.name.endsWith(".STL")) {
         readSTL(file)
       }
     }
@@ -184,7 +184,7 @@ function drawSTLOnCanvas(file) {
       const filename =  Math.random().toString(36).substring(2, 15) + ".jpeg"
       const file = new File([blob], filename, {
         type: "image/jpeg",
-        quality: 0.95,
+        quality: 1,
         lastModified: Date.now()
       })
 
@@ -201,7 +201,7 @@ function drawSTLOnCanvas(file) {
           drawAndRenderThumbnail(image)
         }
       }
-    }, "image/jpeg", 0.95)
+    }, "image/jpeg", 1)
   }
 
   element.remove()

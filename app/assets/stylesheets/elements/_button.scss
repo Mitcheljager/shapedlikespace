@@ -116,3 +116,19 @@
   font-weight: bold;
   text-transform: lowercase;
 }
+
+.button-clear {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+
+  &:focus,
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+}

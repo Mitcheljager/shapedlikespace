@@ -48,8 +48,11 @@
   <aside class="post__top-sidebar">
     <%= link_to "Download files", "#", class: "button button--primary" %>
 
-    <%= render "favorites/form", post: @post %>
-    <%= link_to "Add a make", "#", class: "button button--secondary top-offset-small" %>
+    <div class="button button--secondary top-offset" data-action="favorite-wrapper">
+      <%= render "favorites/form", favoritable_type: "Post", favoritable_id: @post.id %>
+    </div>
+
+    <%= link_to "Add a print", "#", class: "button button--secondary top-offset-small" %>
     <%= render "collections/dropdown" %>
 
     <%= link_to "Edit your post", edit_post_path(@post.slug), class: "button button--secondary top-offset" if @post.user == current_user %>

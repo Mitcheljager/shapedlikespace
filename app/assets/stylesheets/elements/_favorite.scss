@@ -51,7 +51,7 @@
   cursor: pointer;
 
   svg {
-    width: 30px;
+    height: 27px;
 
     path {
       fill: var(--text);
@@ -61,7 +61,7 @@
   &:hover,
   &:active {
     svg path {
-      fill: $black;
+      fill: var(--text);
     }
   }
 
@@ -98,8 +98,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 30px;
-      height: 30px;
+      width: 27px;
+      height: 27px;
       border-radius: 50%;
       background: $red;
       z-index: 0;

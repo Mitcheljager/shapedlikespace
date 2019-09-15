@@ -3,8 +3,8 @@
 
 @keyframes comment-has-been-added {
   from {
-    background: $light;
-    box-shadow: 0 0 0 $margin / 4 $light;
+    background: var(--background-shade);
+    box-shadow: 0 0 0 $margin / 4 var(--background-shade);
   }
 
   to {

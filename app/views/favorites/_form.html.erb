@@ -1,12 +1,12 @@
 <% if current_user %>
-  <% has_been_favorited = Favorite.find_by_post_id_and_user_id(post.id, current_user.id).present? %>
+  <% has_been_favorited = Favorite.find_by_favoritable_type_and_favoritable_id_and_user_id(favoritable_type, favoritable_id, current_user.id).present? %>
 
-  <div data-favorite="<%= post.id %>">
+  <div data-favorite="<%= favoritable_id %>">
     <%= button_to favorites_path,
         remote: true,
         method: has_been_favorited ? :delete : :post,
-        params: { favorite: { post_id: post.id } },
-        class: "button button--secondary top-offset" do %>
+        params: { favorite: { favoritable_type: favoritable_type, favoritable_id: favoritable_id } },
+        class: "button-clear" do %>
       <div class="favorite <%= "favorite--is-active" if has_been_favorited %>">
         <%= inline_svg "icons/icon-heart#{ "-border" unless has_been_favorited }.svg" %>
       </div>

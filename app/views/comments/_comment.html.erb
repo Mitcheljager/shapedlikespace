@@ -1,6 +1,6 @@
 <div class="comment" data-comment="<%= comment.id %>">
   <div class="comment__sidebar">
-    <%= inline_svg "icons/icon-heart-border.svg" %>
+    <%= render "favorites/form", favoritable_type: "Comment", favoritable_id: comment.id %>
   </div>
 
   <div class="comment__main">
