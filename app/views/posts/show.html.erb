@@ -18,15 +18,18 @@
 
             <% if @post.file_associations %>
               <div class="carousel__actions">
-                <% stl_id = JSON.parse(@post.file_associations).select { |file_association| file_association["image"] == image.blob_id }[0]["stl"] %>
-                <% file = @post.files.find_by_blob_id(stl_id) %>
+                <% stl_id = JSON.parse(@post.file_associations).select { |file_association| file_association["image"] == image.blob_id } %>
 
-                <%= link_to "Download file", asset_path(rails_blob_path(file)), class: "button button--action" %>
+                <% if stl_id.any? %>
+                  <% file = @post.files.find_by_blob_id(stl_id[0]["stl"]) %>
 
-                <div class="button button--action" data-action="set-model-viewer" data-src="<%= url_for file %>">
-                  View in model viewer
-                  <small><%= number_to_human_size file.byte_size %></small>
-                </div>
+                  <%= link_to "Download file", asset_path(rails_blob_path(file)), class: "button button--action" %>
+
+                  <div class="button button--action" data-action="set-model-viewer" data-src="<%= url_for file %>">
+                    View in model viewer
+                    <small><%= number_to_human_size file.byte_size %></small>
+                  </div>
+                <% end %>
               </div>
             <% end %>
           </div>

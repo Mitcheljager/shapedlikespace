@@ -104,7 +104,7 @@ function drawImageOnCanvas(image) {
     })
 
     drawAndRenderThumbnail(image)
-    new Uploader(file, "images")
+    new Uploader(file, "images").upload()
   }, "image/jpeg", 0.95)
 }
 
@@ -224,7 +224,6 @@ async function createSTLUploader(file, type, resolve) {
   const uploader = new Uploader(file, type)
 
   uploader.upload().then(() => {
-
     const interval = setInterval(() => {
       if (uploader.blob == "") return
       clearInterval(interval)
