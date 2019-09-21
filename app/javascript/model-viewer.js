@@ -1,61 +1,91 @@
 import * as THREE from "three"
 import { STLLoader } from "three/examples/jsm/loaders/STLLoader.js"
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js"
 
-let camera, scene, renderer, controls, geometry, material, mesh
+class ModelViewer {
+  constructor(element, src) {
+    this.element = element
+    this.src = src
 
-document.addEventListener("turbolinks:load", function() {
-  const elements = document.querySelectorAll("[data-role='model-viewer']")
+    this.camera, this.scene, this.renderer, this.controls, this.geometry, this.material, this.mesh
 
-  elements.forEach(element => { buildModelViewer(element) })
-})
+    this.buildModelViewer()
+  }
 
-function buildModelViewer(element, controllable = true) {
-  const elementWidth = element.offsetWidth
-  const elementHeight = element.offsetWidth / 16 * 10
+  buildModelViewer() {
+    const elementWidth = this.element.offsetWidth
+    const elementHeight = Math.round(this.element.offsetWidth / 16 * 10 - 1)
 
-  element.style.height = elementHeight + "px"
+    this.element.style.height = elementHeight + "px"
 
-  camera = new THREE.PerspectiveCamera(50, elementWidth / elementHeight, 0.1, 10000)
+    this.camera = new THREE.PerspectiveCamera(50, elementWidth / elementHeight, 0.1, 10000)
+    this.scene = new THREE.Scene()
+    this.material = new THREE.MeshNormalMaterial()
 
-  scene = new THREE.Scene()
+    this.renderer = new THREE.WebGLRenderer({ antialias: true })
+    this.renderer.setSize(elementWidth, elementHeight)
+    this.renderer.setClearColor(0xecf0f2)
 
-  material = new THREE.MeshNormalMaterial()
+    const loader = new STLLoader()
+    loader.load(this.src,
+      loaded => { this.onLoad(loaded) },
+      progress => { this.onProgress(progress) },
+      error => { this.onError(error) }
+    )
 
-  renderer = new THREE.WebGLRenderer({ antialias: true })
-  renderer.setSize(elementWidth, elementHeight)
-  renderer.setClearColor(0xecf0f2)
+    this.element.appendChild(this.renderer.domElement)
 
-  const loader = new STLLoader()
-  loader.load("/uploads/models/6gon_bowl.stl", function (geometry) {
-    const mesh = new THREE.Mesh(geometry, material)
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+    this.addControlsToWebViewer()
+  }
 
-    mesh.scale.set(1, 1, 1)
-    mesh.rotation.x = -1
+  onLoad(loaded) {
+    this.mesh = new THREE.Mesh(loaded, this.material)
+    this.mesh.scale.set(1, 1, 1)
+    this.mesh.rotation.x = -1
+    this.mesh.geometry.center()
 
-    mesh.geometry.center()
-
-    const boundingBox = new THREE.Box3().setFromObject(mesh)
+    const boundingBox = new THREE.Box3().setFromObject(this.mesh)
     const size = boundingBox.getSize()
     const maxSize = Math.max(size.x, size.y)
 
-    camera.position.z = maxSize * 2
+    this.camera.position.z = maxSize * 2
 
-    scene.add(mesh)
-  })
+    this.scene.add(this.mesh)
 
-  element.appendChild(renderer.domElement)
+    let progressElement = this.element.querySelector("[data-progress]")
+    if (progressElement) progressElement.remove()
+  }
 
-  if (!controllable) return
+  onProgress(progress) {
+    let progressElement = this.element.querySelector("[data-progress]")
 
-  controls = new OrbitControls(camera, renderer.domElement)
+    if (!progressElement) {
+      progressElement = document.createElement("div")
+      progressElement.classList.add("model-viewer__progress")
 
-  addControlsToWebViewer()
+      const progressBarElement = document.createElement("div")
+      progressBarElement.classList.add("model-viewer__progress-bar")
+
+      progressElement.append(progressBarElement)
+      this.element.prepend(progressElement)
+    }
+
+    const progressPercentage = Math.round((100 / progress.total) * progress.loaded)
+    progressElement.setAttribute("data-progress", `${ progressPercentage }%`)
+    progressElement.querySelector(".model-viewer__progress-bar").style.width = `${ progressPercentage }%`
+  }
+
+  onError(error) {
+    alert("Something has gone wrong when trying to load the model. Please refresh the page and try again.")
+  }
+
+  addControlsToWebViewer() {
+    requestAnimationFrame(this.addControlsToWebViewer.bind(this))
+    this.controls.update()
+
+    this.renderer.render(this.scene, this.camera)
+  }
 }
 
-function addControlsToWebViewer() {
-  requestAnimationFrame(addControlsToWebViewer)
-  controls.update()
-
-  renderer.render(scene, camera)
-}
+export default ModelViewer

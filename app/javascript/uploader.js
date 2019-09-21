@@ -3,22 +3,26 @@ import { DirectUpload } from "@rails/activestorage"
 class Uploader {
   constructor(file, name) {
     this.file = file
-
-    this.upload(file, name)
+    this.name = name
+    this.blob = ""
   }
 
-  upload(file, name) {
-    const element = document.querySelector("input[type='file'][name*='" + name + "']")
-    const upload = new DirectUpload(file, element.dataset.directUploadUrl, this)
+  async upload() {
+    const element = document.querySelector("input[type='file'][name*='" + this.name + "']")
+    const upload = new DirectUpload(this.file, element.dataset.directUploadUrl, this)
 
     upload.create((error, blob) => {
       if (error) {
+        reject()
         alert(error)
-      } else{
+      } else {
+        this.blob = blob
+
         const hiddenField = document.createElement("input")
         hiddenField.setAttribute("type", "hidden")
         hiddenField.setAttribute("value", blob.signed_id)
         hiddenField.name = element.name
+
         document.querySelector("[data-role='post-form']").appendChild(hiddenField)
       }
     })

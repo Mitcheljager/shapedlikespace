@@ -2,7 +2,7 @@
   <%= link_to "Add to collection", "#", class: "button button--secondary bottom-offset-small" %>
 
   <div class="dropdown__content" data-role="dropdown-content">
-    <% if current_user.collections.any? %>
+    <% if current_user && current_user.collections.any? %>
       <% current_user.collections.each do |collection| %>
         <%= render "collection_posts/form", collection: collection %>
       <% end %>

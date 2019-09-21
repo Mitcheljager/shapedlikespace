@@ -104,9 +104,27 @@
     }
   }
 
+  &--action {
+    border: 0;
+    background: var(--background);
+    color: var(--text);
+    padding: .5em 1.5em;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: $font-stack;
+    white-space: nowrap;
+    box-shadow: $box-shadow;
+  }
+
   &--inline {
     display: inline-block;
     width: auto;
+  }
+
+  small {
+    margin-left: 1em;
+    font-size: .75em;
+    opacity: .5;
   }
 }
 

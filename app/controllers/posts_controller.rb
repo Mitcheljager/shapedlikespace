@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     @posts = Post.search(params[:search]).records.page params[:page]
   end
 
-  def show    
+  def show
     impressionist(@post)
   end
 
@@ -76,7 +76,15 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :description, { categories: [] }, :tags, images: [], files: [])
+    params.require(:post).permit(
+      :title,
+      :description,
+      :file_associations,
+      :tags,
+      categories: [],
+      images: [],
+      files: []
+    )
   end
 
   def create_slug

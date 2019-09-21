@@ -4,25 +4,39 @@
 
 <article class="post">
   <div class="post__image carousel">
-    <% if @post.files.any? %>
-      <!-- <div class="model-viewer" data-role="model-viewer"></div> -->
-    <% end %>
+    <div class="model-viewer" data-role="model-viewer"></div>
 
     <div class="carousel__wrapper">
       <div data-role="carousel">
         <% @post.images.each_with_index do |image, index| %>
-          <picture>
-            <source media="(min-width: 560px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
-            <source media="(min-width: 0px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
-            <img <%= "data-" if index >= 2 %>src="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" %>
-          </picture>
+          <div class="carousel__item">
+            <picture>
+              <source media="(min-width: 560px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
+              <source media="(min-width: 0px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
+              <img <%= "data-" if index >= 2 %>src="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" %>
+            </picture>
+
+            <% if @post.file_associations %>
+              <div class="carousel__actions">
+                <% stl_id = JSON.parse(@post.file_associations).select { |file_association| file_association["image"] == image.blob_id }[0]["stl"] %>
+                <% file = @post.files.find_by_blob_id(stl_id) %>
+
+                <%= link_to "Download file", asset_path(rails_blob_path(file)), class: "button button--action" %>
+
+                <div class="button button--action" data-action="set-model-viewer" data-src="<%= url_for file %>">
+                  View in model viewer
+                  <small><%= number_to_human_size file.byte_size %></small>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
       </div>
     </div>
 
     <div class="carousel__navigation">
       <% @post.images.each_with_index do |image, index| %>
-        <div class="carousel__item" data-action="carousel-go-to" data-target="<%= index %>">
+        <div class="carousel__navigation-item" data-action="carousel-go-to" data-target="<%= index %>">
           <%= image_tag image.variant(quality: 95, resize_to_fill: [120, 120]).processed %>
         </div>
       <% end %>

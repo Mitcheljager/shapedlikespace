@@ -20,6 +20,7 @@
       <div class="form-group">
         <%= form.file_field :images, multiple: true, direct_upload: true, class: "hidden-field" %>
         <%= form.file_field :files, multiple: true, direct_upload: true, class: "hidden-field" %>
+        <%= form.hidden_field :file_associations %>
 
         <div class="dropzone top-offset" data-role="dropzone">
           <strong>Drop images and .stl files here to add them to your post</strong>

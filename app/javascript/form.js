@@ -73,9 +73,6 @@ function readSTL(file) {
 
   reader.onload = event => {
     drawSTLOnCanvas(file)
-
-    new Uploader(file, "files")
-    addToFileList(file)
   }
 }
 
@@ -182,29 +179,59 @@ function drawSTLOnCanvas(file) {
 
     ctx.canvas.toBlob(blob => {
       const filename =  Math.random().toString(36).substring(2, 15) + ".jpeg"
-      const file = new File([blob], filename, {
+      const image = new File([blob], filename, {
         type: "image/jpeg",
         quality: 1,
         lastModified: Date.now()
       })
 
-      new Uploader(file, "images")
+      addToFileList(file)
+      uploadSTLFiles(file, image)
 
       const reader = new FileReader()
-      reader.readAsDataURL(file)
+      reader.readAsDataURL(image)
 
       reader.onload = event => {
-        const image = new Image()
-        image.src = event.target.result
+        const thumbnail = new Image()
+        thumbnail.src = event.target.result
 
-        image.onload = () => {
-          drawAndRenderThumbnail(image)
+        thumbnail.onload = () => {
+          drawAndRenderThumbnail(thumbnail)
         }
       }
     }, "image/jpeg", 1)
   }
 
   element.remove()
+}
+
+function uploadSTLFiles(file, image) {
+  const promises = [
+    new Promise(resolve => createSTLUploader(file, "files", resolve)),
+    new Promise(resolve => createSTLUploader(image, "images", resolve))
+  ]
+
+  Promise.all(promises).then(data => {
+    const fileAssociationsField = document.querySelector("input[name*='file_associations']")
+    const value = fileAssociationsField.value ? JSON.parse(fileAssociationsField.value) : []
+    value.push({ "stl": data[0].id, "image": data[1].id })
+
+    fileAssociationsField.value = JSON.stringify(value)
+  })
+}
+
+async function createSTLUploader(file, type, resolve) {
+  const uploader = new Uploader(file, type)
+
+  uploader.upload().then(() => {
+
+    const interval = setInterval(() => {
+      if (uploader.blob == "") return
+      clearInterval(interval)
+
+      resolve(uploader.blob)
+    }, 100)
+  })
 }
 
 function buildSortable() {
