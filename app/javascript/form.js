@@ -103,12 +103,21 @@ function drawImageOnCanvas(image) {
       lastModified: Date.now()
     })
 
-    drawAndRenderThumbnail(image)
-    new Uploader(file, "images").upload()
+    const uploader = new Uploader(file, "images")
+
+    uploader.upload().then(() => {
+      const interval = setInterval(() => {
+        if (uploader.blob == "") return
+        clearInterval(interval)
+
+        drawAndRenderThumbnail(image, uploader.blob.id)
+      }, 100)
+    })
+
   }, "image/jpeg", 0.95)
 }
 
-function drawAndRenderThumbnail(image) {
+function drawAndRenderThumbnail(image, imageId) {
   const thumbnailsElement = document.querySelector("[data-role~='form-image-thumbnails']")
   const canvas = document.createElement("canvas")
   const ctx = canvas.getContext("2d")
@@ -132,9 +141,12 @@ function drawAndRenderThumbnail(image) {
   thumbnail.src = canvas.toDataURL("image/jpg")
   const thumbnailItem = document.createElement("div")
   thumbnailItem.classList.add("images-preview__item")
+  thumbnailItem.dataset.id = imageId
   thumbnailItem.append(thumbnail)
 
   thumbnailsElement.append(thumbnailItem)
+
+  updateSortable()
 }
 
 function drawSTLOnCanvas(file) {
@@ -186,29 +198,31 @@ function drawSTLOnCanvas(file) {
       })
 
       addToFileList(file)
-      uploadSTLFiles(file, image)
+      const promise = new Promise(resolve => uploadSTLFiles(file, image, resolve))
 
-      const reader = new FileReader()
-      reader.readAsDataURL(image)
+      promise.then(data => {
+        const reader = new FileReader()
+        reader.readAsDataURL(image)
 
-      reader.onload = event => {
-        const thumbnail = new Image()
-        thumbnail.src = event.target.result
+        reader.onload = event => {
+          const thumbnail = new Image()
+          thumbnail.src = event.target.result
 
-        thumbnail.onload = () => {
-          drawAndRenderThumbnail(thumbnail)
+          thumbnail.onload = () => {
+            drawAndRenderThumbnail(thumbnail, data)
+          }
         }
-      }
+      })
     }, "image/jpeg", 1)
   }
 
   element.remove()
 }
 
-function uploadSTLFiles(file, image) {
+async function uploadSTLFiles(file, image, resolve) {
   const promises = [
-    new Promise(resolve => createSTLUploader(file, "files", resolve)),
-    new Promise(resolve => createSTLUploader(image, "images", resolve))
+    new Promise(resolve => createUploaderPromise(file, "files", resolve)),
+    new Promise(resolve => createUploaderPromise(image, "images", resolve))
   ]
 
   Promise.all(promises).then(data => {
@@ -217,10 +231,12 @@ function uploadSTLFiles(file, image) {
     value.push({ "stl": data[0].id, "image": data[1].id })
 
     fileAssociationsField.value = JSON.stringify(value)
+
+    resolve(data[1].id)
   })
 }
 
-async function createSTLUploader(file, type, resolve) {
+async function createUploaderPromise(file, type, resolve) {
   const uploader = new Uploader(file, type)
 
   uploader.upload().then(() => {
@@ -239,7 +255,8 @@ function buildSortable() {
   if (!element) return
 
   const sortable = Sortable.create(element, {
-    animation: 50
+    animation: 50,
+    onUpdate: () => { updateSortable() }
   })
 }
 
@@ -252,4 +269,13 @@ function addToFileList(file) {
   newElement.innerText = file.name
 
   fileListElement.append(newElement)
+}
+
+function updateSortable() {
+  const element = document.querySelector("[data-role*='form-image-thumbnails']")
+  const items = [...element.querySelectorAll(".images-preview__item")]
+  const array = items.map(item => parseInt(item.dataset.id))
+
+  const input = document.querySelector("input[name*='image_order']")
+  input.value = JSON.stringify(array)
 }

@@ -41,7 +41,7 @@
   width: 100%;
   position: relative;
   border-radius: $border-radius;
-  background: $light;
+  background: var(--background-content);
   text-align: center;
   font-size: 14px;
   overflow: hidden;

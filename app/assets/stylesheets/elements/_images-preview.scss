@@ -15,9 +15,32 @@
 }
 
 .images-preview__item {
+  position: relative;
   border-radius: $border-radius;
   overflow: hidden;
   animation: fade-in-image-preview-item 200ms;
+  cursor: grab;
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:first-child {
+    &::before {
+      content: "thumbnail";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba($black, .5);
+      font-size: 11px;
+      line-height: 2em;
+      text-align: center;
+      font-weight: bold;
+      color: rgba($white, .75);
+    }
+  }
 
   img {
     display: block;

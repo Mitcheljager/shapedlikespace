@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_18_203421) do
+ActiveRecord::Schema.define(version: 2019_09_24_111556) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2019_09_18_203421) do
     t.integer "impressions_count", default: 0
     t.integer "hotness", default: 0
     t.string "file_associations"
+    t.string "image_order"
     t.index ["favorites_count"], name: "index_posts_on_favorites_count"
     t.index ["hotness"], name: "index_posts_on_hotness"
     t.index ["impressions_count"], name: "index_posts_on_impressions_count"

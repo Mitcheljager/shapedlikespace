@@ -21,6 +21,7 @@
         <%= form.file_field :images, multiple: true, direct_upload: true, class: "hidden-field" %>
         <%= form.file_field :files, multiple: true, direct_upload: true, class: "hidden-field" %>
         <%= form.hidden_field :file_associations %>
+        <%= form.hidden_field :image_order %>
 
         <div class="dropzone top-offset" data-role="dropzone">
           <strong>Drop images and .stl files here to add them to your post</strong>
@@ -29,8 +30,13 @@
         </div>
 
         <div class="images-preview top-offset" data-role="form-image-thumbnails sortable">
-          <% @post.images.each do |image| %>
-            <div class="images-preview__item"><%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [200, 200]).processed %></div>
+          <% image_ids = @post.image_order || "[]" %>
+          <% ordered_images = JSON.parse(image_ids).collect { |i| @post.images.find_by_blob_id(i) } %>
+
+          <% ordered_images.each do |image| %>
+            <div class="images-preview__item" data-id="<%= image.blob_id %>">
+              <%= image_tag image.variant(convert: "jpg", quality: 85, resize_to_fill: [200, 200]).processed %>
+            </div>
           <% end %>
         </div>
       </div>

@@ -113,7 +113,11 @@
     font-weight: 700;
     font-family: $font-stack;
     white-space: nowrap;
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
+
+    .dark-mode & {
+      box-shadow: none;
+    }
   }
 
   &--inline {

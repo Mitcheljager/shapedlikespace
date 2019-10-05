@@ -81,6 +81,7 @@ class PostsController < ApplicationController
       :description,
       :file_associations,
       :tags,
+      :image_order,
       categories: [],
       images: [],
       files: []
