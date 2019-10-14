@@ -2,6 +2,7 @@
   display: none;
   position: relative;
   border-radius: $border-radius;
+  background: var(--background-shade);
   box-shadow: 0 0 0 $margin / 4 var(--background);
   overflow: hidden;
   cursor: grab;

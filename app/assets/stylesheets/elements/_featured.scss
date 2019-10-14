@@ -1,10 +1,5 @@
 .featured {
-  color: $white;
-  margin-bottom: $margin * 6;
-
-  .simple-mode & {
-    color: var(--text);
-  }
+  margin-bottom: $margin * 4;
 }
 
 .featured__items {
@@ -16,23 +11,20 @@
 .featured__item {
   position: relative;
   background: $light;
+  border: $margin / 4 solid var(--background);
   border-radius: $border-radius * 2;
   overflow: hidden;
-  transition: box-shadow 100ms;
+  transition: box-shadow 150ms;
 
   &:hover,
   &:active {
-    box-shadow: $box-shadow;
+    box-shadow: var(--box-shadow);
   }
 
   &::before {
     content: "";
     display: block;
     padding-bottom: 100%;
-  }
-
-  .simple-mode & {
-    border: $margin / 4 solid var(--background);
   }
 }
 

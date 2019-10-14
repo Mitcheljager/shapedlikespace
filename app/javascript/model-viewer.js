@@ -22,9 +22,9 @@ class ModelViewer {
     this.scene = new THREE.Scene()
     this.material = new THREE.MeshNormalMaterial()
 
-    this.renderer = new THREE.WebGLRenderer({ antialias: true })
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     this.renderer.setSize(elementWidth, elementHeight)
-    this.renderer.setClearColor(0xecf0f2)
+    this.renderer.setClearColor(0x1a1d23, 0)
 
     const loader = new STLLoader()
     loader.load(this.src,

@@ -2,7 +2,7 @@
 
 <%= render "filter" %>
 
-<h1><center>Filtered Creations (<%= number_to_human @posts.count %>)</center></h1>
+<h1><center>Filtered Creations <small>(<%= number_to_human @posts.count %>)</small></center></h1>
 
 <%= render "posts", posts: @posts %>
 

@@ -20,7 +20,7 @@ class Post < ApplicationRecord
   validates :categories, presence: true
   validates :tags, length: { maximum: 50 }
   validates :images, attached: true,
-                     content_type: "image/jpeg",
+                     content_type: "image/png",
                      size: { less_than: 500.kilobytes }
 
   def self.search(query)

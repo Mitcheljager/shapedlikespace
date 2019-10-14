@@ -138,7 +138,7 @@ function drawAndRenderThumbnail(image, imageId) {
   ctx.drawImage(image, (canvas.width / 2) - (image.width / 2), (canvas.height / 2) - (image.height / 2), image.width, image.height)
 
   const thumbnail = new Image()
-  thumbnail.src = canvas.toDataURL("image/jpg")
+  thumbnail.src = canvas.toDataURL("image/png")
   const thumbnailItem = document.createElement("div")
   thumbnailItem.classList.add("images-preview__item")
   thumbnailItem.dataset.id = imageId
@@ -154,7 +154,7 @@ function drawSTLOnCanvas(file) {
   const camera = new THREE.PerspectiveCamera(50, 770 / 480, 0.1, 10000)
   const scene = new THREE.Scene()
   const material = new THREE.MeshNormalMaterial()
-  const renderer = new THREE.WebGLRenderer({ antialias: true })
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
   const manager = new THREE.LoadingManager()
   const loader = new STLLoader(manager)
 
@@ -162,7 +162,7 @@ function drawSTLOnCanvas(file) {
   element.style.height = 480 + "px"
 
   renderer.setSize(770, 480)
-  renderer.setClearColor(0xecf0f2)
+  renderer.setClearColor(0x1a1d23, 0)
 
   const url = URL.createObjectURL(file)
   loader.load(url, function (geometry) {
@@ -190,14 +190,15 @@ function drawSTLOnCanvas(file) {
     const ctx = canvas.getContext("webgl")
 
     ctx.canvas.toBlob(blob => {
-      const filename =  Math.random().toString(36).substring(2, 15) + ".jpeg"
+      const filename =  Math.random().toString(36).substring(2, 15) + ".png"
       const image = new File([blob], filename, {
-        type: "image/jpeg",
+        type: "image/png",
         quality: 1,
         lastModified: Date.now()
       })
 
       addToFileList(file)
+
       const promise = new Promise(resolve => uploadSTLFiles(file, image, resolve))
 
       promise.then(data => {
@@ -213,7 +214,7 @@ function drawSTLOnCanvas(file) {
           }
         }
       })
-    }, "image/jpeg", 1)
+    }, "image/png", 1)
   }
 
   element.remove()

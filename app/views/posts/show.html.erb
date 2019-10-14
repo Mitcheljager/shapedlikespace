@@ -14,8 +14,8 @@
         <% ordered_images.each_with_index do |image, index| %>
           <div class="carousel__item">
             <picture>
-              <source media="(min-width: 560px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" type="image/jpg">
-              <source media="(min-width: 0px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [335, 256]).processed %>" type="image/jpg">
+              <source media="(min-width: 560px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" type="image/png">
+              <source media="(min-width: 0px)" <%= "data-" if index >= 2 %>srcset="<%= url_for image.variant(quality: 95, resize_to_fill: [335, 256]).processed %>" type="image/png">
               <img <%= "data-" if index >= 2 %>src="<%= url_for image.variant(quality: 95, resize_to_fill: [770, 480]).processed %>" %>
             </picture>
 

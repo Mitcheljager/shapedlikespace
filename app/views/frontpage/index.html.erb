@@ -1,12 +1,6 @@
-<% unless simple_mode? %>
-  <header class="hero">
-    <%= inline_svg "layout/full-bubbles.svg", class: "hero__bubbles" %>
-  </header>
-<% else %>
-  <%= inline_svg "layout/background-blobs-header-2.svg", class: "header__blobs" %>
-<% end %>
+<%= inline_svg "layout/background-blobs-header-2.svg", class: "header__blobs" %>
 
-<div class="featured">
+<section class="featured">
   <h1><center>Featured Creations</center></h1>
 
   <div class="featured__items">
@@ -22,11 +16,23 @@
       <% end %>
     <% end %>
   </div>
-</div>
+</section>
 
 <h1><center>Popular Creations</center></h1>
 
 <%= render "posts/posts", posts: @hot_posts %>
+
+<center><%= link_to "View more", posts_path, class: "button button--primary button--inline top-offset" %></center>
+
+<section class="categories">
+  <% categories.each do |category| %>
+    <div class="category">
+      <%= category %>
+    </div>
+  <% end %>
+
+  <%= inline_svg "layout/background-blobs-content.svg", class: "categories__blob" %>
+</section>
 
 <h1><center>Recent Creations</center></h1>
 

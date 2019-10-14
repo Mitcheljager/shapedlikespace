@@ -6,7 +6,7 @@ html {
   background: var(--background);
 
   --text: #{ $black };
-  --text: #{ lighten($black, 30%) };
+  --text-light: #{ lighten($black, 30%) };
   --background: #{ $white };
   --background-shade: #{ $light };
   --background-content: #{ $lighter };
