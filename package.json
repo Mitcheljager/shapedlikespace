@@ -8,7 +8,7 @@
     "@rails/webpacker": "^4.0.7",
     "siema": "^1.5.1",
     "sortablejs": "^1.10.0-rc3",
-    "three": "^0.107.0",
+    "three": "^0.137.0",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
