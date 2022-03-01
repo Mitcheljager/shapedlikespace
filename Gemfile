@@ -25,7 +25,7 @@ gem "high_voltage", "~> 3.0.0"
 
 gem "aws-sdk-s3", require: false
 gem "mini_magick", ">= 4.9.5"
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.12"
 gem "active_storage_validations"
 
 group :development, :test do
