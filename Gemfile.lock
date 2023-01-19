@@ -92,7 +92,7 @@ GEM
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.10)
     crass (1.0.5)
     elasticsearch (7.3.0)
       elasticsearch-api (= 7.3.0)
@@ -117,13 +117,13 @@ GEM
     ffi (1.11.1-x64-mingw32)
     ffi-win32-extensions (1.0.3)
       ffi
-    globalid (0.4.2)
-      activesupport (>= 4.2.0)
+    globalid (1.0.1)
+      activesupport (>= 5.0)
     hashie (3.6.0)
     heroku-deflater (0.6.3)
       rack (>= 1.4.5)
     high_voltage (3.0.0)
-    i18n (1.6.0)
+    i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.9.2)
       mini_magick (>= 4.9.5, < 5)
@@ -162,7 +162,7 @@ GEM
     mini_magick (4.9.5)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
-    minitest (5.11.3)
+    minitest (5.17.0)
     multi_json (1.13.1)
     multipart-post (2.1.1)
     nio4r (2.4.0)
@@ -242,7 +242,7 @@ GEM
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.2)
       tzinfo (>= 1.0.0)
@@ -267,7 +267,7 @@ GEM
       ffi-win32-extensions
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.1.9)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
